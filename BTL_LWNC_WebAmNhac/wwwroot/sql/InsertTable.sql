@@ -5,9 +5,10 @@ DBCC CHECKIDENT ('[TableName]', RESEED, 0);
 GO
 USE [WebAmNhac]
 GO
-INSERT INTO [User]([Name]) VALUES(N'Tiến')
-INSERT INTO [User]([Name]) VALUES(N'Tùng')
-INSERT INTO [User]([Name]) VALUES(N'Tân')
+INSERT INTO [User]([Name],[Email],[Password],[Role]) VALUES(N'admin','admin@gmail.com','admin','Admin')
+INSERT INTO [User]([Name],[Email],[Password],[Role]) VALUES(N'user','user@gmail.com','user','User')
+INSERT INTO [User]([Name],[Email],[Password],[Role]) VALUES(N'user1','user1@gmail.com','user1','User')
+INSERT INTO [User]([Name],[Email],[Password],[Role]) VALUES(N'user2','user2@gmail.com','user1','User')
 GO
 INSERT INTO [Playlist]([Name],[Detail],[Thumbnail],[UserID]) VALUES(N'Chill Hits',N'Quay trở lại với những bản hit thư giãn mới và hay nhất gần đây','/image/album_chill_hits.jpg',1)
 INSERT INTO [Playlist]([Name],[Detail],[Thumbnail],[UserID]) VALUES(N'Rock Việt',N'Tất cả về cảm xúc và năng lượng đích thực của rock được thể hiện qua Playlist này','/image/album_rockviet.jpg',1)

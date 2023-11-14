@@ -13,8 +13,8 @@ namespace BTL_LWNC_WebAmNhac.Models
 
         public string? Password { get; set; }
 
-        public int Age { get; set; }
-
         public string? Role { get; set; }
+
+        public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
     }
 }

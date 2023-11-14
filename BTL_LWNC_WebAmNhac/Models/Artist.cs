@@ -14,5 +14,7 @@ namespace BTL_LWNC_WebAmNhac.Models
         public string? Country { get; set; }
 
         public string? Image { get; set; }
+
+        public virtual ICollection<Song> Songs { get; set; } = new List<Song>();
     }
 }

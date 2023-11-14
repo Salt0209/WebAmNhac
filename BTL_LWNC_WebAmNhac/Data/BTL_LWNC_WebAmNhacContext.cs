@@ -21,5 +21,7 @@ namespace BTL_LWNC_WebAmNhac.Data
         public DbSet<BTL_LWNC_WebAmNhac.Models.Artist>? Artist { get; set; }
 
         public DbSet<BTL_LWNC_WebAmNhac.Models.Genre>? Genre { get; set; }
+
+        public DbSet<BTL_LWNC_WebAmNhac.Models.User>? User { get; set; }
     }
 }

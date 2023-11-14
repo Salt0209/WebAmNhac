@@ -7,27 +7,8 @@ GO
 CREATE DATABASE [WebAmNhac];
 GO
 USE [WebAmNhac]
-
 GO
-CREATE TABLE [dbo].[Playlist] (
-    [ID]   INT IDENTITY(1, 1) NOT NULL,
-    [Name] NCHAR (30) NULL,
-	[Detail] NCHAR (150) NULL,
-	[Thumbnail] NCHAR (50) NULL,
-	[UserID] INT NULL,
-	[ViewCount] INT DEFAULT 0,
-    PRIMARY KEY CLUSTERED ([ID] ASC)
-);
-GO
-CREATE TABLE [dbo].[Genre] (
-    [ID]   INT  IDENTITY (1, 1) NOT NULL,
-    [Name] NCHAR (20) NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC)
-);
 
-
-
-GO
 CREATE TABLE [dbo].[User] (
     [ID]       INT        IDENTITY (1, 1) NOT NULL,
     [Name]     NCHAR (30) NULL,
@@ -37,6 +18,24 @@ CREATE TABLE [dbo].[User] (
     [Role]     NCHAR (10) NULL,
     PRIMARY KEY CLUSTERED ([ID] ASC)
 );
+GO
+CREATE TABLE [dbo].[Playlist] (
+    [ID]   INT IDENTITY(1, 1) NOT NULL,
+    [Name] NCHAR (30) NULL,
+	[Detail] NCHAR (150) NULL,
+	[Thumbnail] NCHAR (50) NULL,
+	[UserID] INT NULL,
+	[ViewCount] INT DEFAULT 0,
+    PRIMARY KEY CLUSTERED ([ID] ASC),
+    CONSTRAINT [FK_Playlist_User] FOREIGN KEY (UserID) REFERENCES [User](ID)
+);
+GO
+CREATE TABLE [dbo].[Genre] (
+    [ID]   INT  IDENTITY (1, 1) NOT NULL,
+    [Name] NCHAR (20) NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
+);
+
 GO
 CREATE TABLE [dbo].[Artist] (
     [ID] INT  NOT NULL IDENTITY (1,1),
