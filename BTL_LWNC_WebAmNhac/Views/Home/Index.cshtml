@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Trang chủ";
+}
+@model Home
+
+
+
+
+<!-- Danh sách bài hát -->
+
+<div class="title">
+    <h4>Bài hát</h4>
+    <h5><a href="/Songs">Hiện tất cả></a></h5>
+</div>
+<div class="music-box">
+    @foreach (var item in Model.Songs)
+    {
+        <div class="music-div">
+            <div class="music-info">
+                <div class="music-img">
+                    <img src="@item.Thumbnail" alt="" runat="server" />
+                </div>
+                <div class="music-name">
+                    <h6>@item.Name</h6>
+                    <p>@item.Artist.Name</p>
+                </div>
+                <i class="fa fa-ellipsis-v"></i>
+            </div>
+            <hr>
+        </div>
+    }
+</div>
+
+
+
+<!-- Danh sách playlist -->
+<div class="title">
+    <h4>Playlist</h4>
+    <h5><a href="/Songs">Hiện tất cả></a></h5>
+</div>
+<div class="playlist-container">
+    @foreach (var item in Model.Playlists)
+    {
+        <div class="playlist-div">
+            <div class="image-container">
+                <img src="@item.Thumbnail" class="playlist-img" alt="" runat="server" />
+            </div>
+            <!-- name detail -->
+            <div class="playlist-title">
+                <div class="text-bold">
+                    @item.Name
+                </div>
+                <div class="text-thin">
+                    @item.Detail
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- Kết thúc playlist -->
+<!-- Danh sách nghệ sĩ -->
+<div class="title">
+    <h4>Nghệ sĩ</h4>
+    <h5><a href="/Artists">Hiện tất cả></a></h5>
+</div>
+<div class="artist-container">
+    @foreach (var item in Model.Artists)
+    {
+        <div class="artist-div">
+            <div class="artist-img-container">
+                <img src="@item.Image" class="artist-img" alt="" runat="server" />
+            </div>
+
+            <h1>@item.Name</h1>
+            <p>@item.Country</p>
+        </div>
+    }
+</div>

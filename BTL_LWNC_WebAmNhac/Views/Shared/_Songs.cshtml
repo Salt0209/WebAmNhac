@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/song.css">
+</head>
+
+<body>
+
+    <div class="header">
+
+        <div class="logo-box">
+            <img src="..\image\logo.jpg" class="logo" alt="logo">
+        </div>
+        <div class="logo-title">
+            <h4>My Music</h4>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search">
+            <button class="search-button">
+                <img src="..\image\search.png" alt="Search">
+            </button>
+        </div>
+        <div class="account-container">
+            <a id="Dangnhap" href="#about">Đăng nhập</a>
+            <a id="Dangky" href="#contact">Đăng ký</a>
+        </div>
+    </div>
+    <hr id="hr-header">
+
+    <div class="body">
+        @await Component.InvokeAsync("Sidebar")
+        <div class="main">
+
+            <!-- Danh sach lựa chọn -->
+            @await Component.InvokeAsync("Option")
+
+            <!-- Danh sách bài hát -->
+            @RenderBody()
+
+            <!-- Kết thúc danh sách -->
+
+        </div>
+    </div>
+
+    <div class="footer">
+    </div>
+
+    <script src="https://kit.fontawesome.com/b22c8b4188.js" crossorigin="anonymous"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

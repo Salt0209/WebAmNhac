@@ -1,0 +1,442 @@
+/* Header */
+.header .logo-box .logo {
+    width: 40px;
+    border: 1px solid #fff;
+}
+
+.header .logo-box {
+    width: 50px;
+    margin: 5px 30px;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center; /* Canh giữa theo chiều dọc */
+    justify-content: center;
+}
+
+.header .logo-title {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center;
+    white-space: nowrap;
+    margin-left: -50px;
+    color: white;
+}
+
+    .header .logo-box:hover, .header .logo-title:hover {
+        cursor: pointer;
+    }
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(12,8.33333%);
+    grid-column: 1/13;
+    background: linear-gradient(to right, #0073e6,#87CEEB);
+    height: 50px;
+}
+
+    .header #Timkiem {
+        grid-column: 5/9;
+    }
+
+.search-container {
+    position: relative;
+    overflow: hidden;
+    height: 35px;
+    grid-column: 5/9;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    margin: auto auto; /* Center the search bar horizontally */
+}
+
+.search-input {
+    flex: 1; /* Allow the input to take up remaining space */
+    padding: 10px;
+    border: 1px solid #0073e6;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    outline: none;
+}
+
+    .search-input:focus {
+        border: 1px solid #fff;
+    }
+
+.search-button {
+    background: white;
+    border-radius: 10%;
+    height: 46px;
+    width: fit-content;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    border-left: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding: 5px;
+}
+
+    .search-button img {
+        width: 24px;
+        height: 24px;
+    }
+
+.header .account-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    text-align: center;
+    white-space: nowrap;
+    grid-column-start: 10;
+}
+
+    .header .account-container a {
+        display: inline-block;
+        margin: 0 20px;
+    }
+
+    .header .account-container #Dangnhap {
+        border-left: 2px solid white; /* Add a right border with your desired style and color */
+        padding-left: 10px;
+        color: white;
+        text-decoration: none;
+    }
+
+    .header .account-container #Dangky {
+        background-color: #ff3399;
+        padding: 10px;
+        border-radius: 10%;
+        color: white;
+        text-decoration: none;
+    }
+
+        .header .account-container #Dangnhap:hover, .header .account-container #Dangky:hover {
+            color: black;
+        }
+
+#hr-header {
+    width: 100%;
+    margin-top: 4px !important;
+    margin-bottom: 6px !important;
+}
+
+/* ----------------------------------------------------------------- */
+/* Left navbar */
+.body {
+    display: grid;
+    grid-template-columns: repeat(12,8.33333%);
+    grid-column: 1/13;
+    background-color: #fff;
+    height:100vh; /* Chiều cao = 100% màn hình*/
+}
+
+.left-side-bar {
+    margin: 0px 10px;
+    grid-column: 1/3;
+    position: relative;
+}
+
+    .left-side-bar ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        overflow: auto;
+        background-image: linear-gradient(#0073e6,#87CEEB);
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .left-side-bar li a {
+        display: block;
+        color: #fff;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        .left-side-bar li a.active {
+            background-color: #ff3399;
+            color: white;
+        }
+
+        .left-side-bar li a:hover:not(.active) {
+            background-color: #ff3399;
+            color: white;
+        }
+
+.main {
+    grid-column: 3/13;
+}
+
+.song img {
+    width: 100px;
+    max-height: 100px;
+}
+/* ------------------------------------------------------- */
+/* Cau hinh man hinh chinh */
+.main {
+    margin-left: 50px;
+}
+
+.title {
+    margin-top:20px;
+    width: 80%;
+    display: inline-block;
+}
+
+    .title h4 {
+        color: #0073e6;
+        margin: 20px auto;
+        float: left;
+    }
+
+    .title h5 a {
+        color: #ff3399;
+        margin: 20px 0px;
+        float: right;
+    }
+
+        .title h5 a:hover {
+            text-decoration: underline;
+        }
+
+.title:hover {
+    cursor: pointer;
+}
+/* Cau hinh lua chon */
+.music-playlist .menu {
+    width: fit-content;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0073e6;
+    border-radius: 10px;
+}
+
+.menu li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+    .menu li:last-child {
+        border-right: none;
+    }
+
+    .menu li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 8px 16px;
+        text-decoration: none;
+    }
+
+        .menu li a:hover:not(.active) {
+            background-color: #ff3399;
+        }
+
+.menu .active {
+    background-color: #ff3399;
+}
+
+
+
+/* Danh sach bai hat */
+.music-box {
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .music-box::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+
+    .music-box i {
+        align-self: center;
+        color: black;
+        cursor: pointer;
+    }
+
+.music-div {
+    margin-right: 30px;
+}
+
+    .music-div:hover {
+        cursor: pointer;
+    }
+
+.music-info {
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+.music-img {
+    width: 50px;
+    height: 50px;
+}
+
+    .music-img img {
+        width: 40px;
+        height: 40px;
+        margin: 2px 5px;
+        padding: 1px;
+    }
+
+.music-name {
+    width: 270px;
+    padding: 0 5px;
+    height: 50px;
+}
+
+    .music-name h6 {
+        margin-top: 12px 0px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .music-name p {
+        font-size: 16px;
+        line-height: 1px;
+        letter-spacing: 0.5px;
+        color: #000;
+        cursor: pointer;
+    }
+
+.music-box hr {
+    width: 100%;
+    margin-top: 4px !important;
+    margin-bottom: 6px !important;
+}
+
+/* Danh sach playlist */
+.playlist-container {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    flex-wrap:wrap;
+}
+
+.playlist-div {
+    width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 30px;
+}
+
+    .playlist-div:hover {
+        cursor: pointer;
+    }
+
+.image-container {
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    margin: 0px auto;
+    position: relative;
+    border-radius:10px;
+}
+
+    .image-container img {
+        max-width: 100%; /* Ensure the image fits within the container */
+        max-height: 100%; /* Ensure the image fits within the container */
+        position: absolute; /* Position the image absolutely within the container */
+        top: 50%; /* Move the image 50% from the top of the container */
+        left: 50%; /* Move the image 50% from the left of the container */
+        transform: translate(-50%, -50%); /* Center the image */
+    }
+
+    .playlist-div .playlist-title {
+        font-size: 16px;
+        color: black;
+        padding: 5px;
+        justify-content: center;
+        bottom: 0;
+        width: 100%;
+        line-height: 1.5;
+    }
+
+        .playlist-div .playlist-title > .text-bold {
+            font-weight: bold;
+        }
+
+        .playlist-div .playlist-title > .text-thin {
+            font-weight: normal;
+            max-height: 50px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+
+
+/* Danh sách nghệ sĩ */
+
+.artist-container {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+    .artist-container .artist-div {
+        width: 200px;
+        margin-right: 30px;
+        text-align: center;
+
+    }
+
+        .artist-container .artist-div:hover {
+            cursor: pointer;
+        }
+
+.artist-img-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.artist-img {
+    max-width:100%;
+    height:auto;
+}
+
+    .artist-container .artist-div h1 {
+        font-size: 20px;
+        font-weight: 400;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    .artist-container .artist-div p {
+        font-size: 14px;
+        color: #333;
+    }

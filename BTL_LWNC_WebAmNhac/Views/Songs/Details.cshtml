@@ -1,0 +1,202 @@
+﻿@model BTL_LWNC_WebAmNhac.Models.Song
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Song</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lyric)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lyric)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Thumbnail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Thumbnail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Artist)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Artist.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Genre.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div class="audio-title">@Model.Name</div>
+<div class="audio-playbar">
+    <div class="audio-row">
+
+        <img src="@Model.Thumbnail" width="100px">
+    </div>
+
+    <div class="audio-row">
+        <audio id="custom-audio-player" src="@Url.Content(Model.Url)" controls></audio>
+    </div>
+
+    <div class="audio-row button-container">
+        <div class="left-button" id="play-button">
+            <i class="fa fa-play" aria-hidden="true"></i>
+        </div>
+        <div class="left-button" id="forward-button">
+            <i class="fa fa-fast-forward" aria-hidden="true"></i>
+        </div>
+        <div class="right-button" >
+            <select id="speed-select">
+                <option value="1">Normal Speed</option>
+                <option value="1.5">1.5x Speed</option>
+                <option value="2">2x Speed</option>
+            </select>
+        </div>
+        <div class="right-button" id="volume-container">
+            <i class="fa fa-volume-up" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+<div class="download-container">
+    <i id="download-button" class="fa fa-download" aria-hidden="true"></i>
+    <p>Tải xuống</p>
+</div>
+<div class="add-container">
+    <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+    <p>Thêm vào playlist</p>
+</div>
+<div class="lyric-container">
+    <p>@Model.Lyric</p>
+</div>
+
+
+
+<style>
+    .audio-playbar {
+        width:900px;
+    display: flex;
+        flex-direction: column;
+        background-color: #f0f0f0;
+        padding: 10px;
+    }
+
+    .audio-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .audio-title {
+        font-weight: bold;
+    }
+
+    #custom-audio-player {
+        width: 100%;
+    }
+
+    .left-button, .right-button {
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    #speed-select, #volume-container {
+        margin-left: 10px;
+    }
+
+    /* Update styles for the button container */
+    .button-container {
+        display: flex;
+        align-items: center;
+    }
+
+    #forward-button {
+        margin-right: auto;
+    }
+
+    .right-button {
+        margin-left: 0;
+    }
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    var audioPlayer = document.getElementById('custom-audio-player');
+    var playButton = document.getElementById('play-button');
+    var pauseButton = document.getElementById('pause-button');
+    var downloadButton = document.getElementById('download-button');
+    var speedSelect = document.getElementById('speed-select');
+
+    downloadButton.addEventListener('click', function () {
+        // Add logic to trigger the download of the audio file
+        var audioFileUrl = '@Url.Content(Model.Url)';
+        var a = document.createElement('a');
+        a.href = audioFileUrl;
+        a.download ="your_file_name"+"@Model.ID"+".mp3" ; // Set the desired file name
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+    speedSelect.addEventListener('change', function () {
+        // Get the selected playback speed from the dropdown
+        var selectedSpeed = speedSelect.value;
+        // Set the playback speed of the audio player
+        audioPlayer.playbackRate = parseFloat(selectedSpeed);
+    });
+
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        var audio = $("#custom-audio-player")[0]; // Get the audio element
+        var playButton = $("#play-button"); // Get the play button element
+
+        // Add a click event listener to the play button
+        playButton.on("click", function () {
+            if (audio.paused) {
+                // If audio is paused, play it
+                audio.play();
+                playButton.find("i").removeClass("fa-play").addClass("fa-pause");
+            } else {
+                // If audio is playing, pause it
+                audio.pause();
+                playButton.find("i").removeClass("fa-pause").addClass("fa-play");
+            }
+        });
+
+        // Add an event listener for the 'ended' event to reset the play button when the audio finishes
+        audio.addEventListener('ended', function () {
+            playButton.find("i").removeClass("fa-pause").addClass("fa-play");
+        });
+    });
+</script>
+

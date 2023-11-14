@@ -1,0 +1,81 @@
+.music-box{
+    width: 70%;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: inline-block;
+  }
+  .music-box::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+  }
+  .music-box .fa-ellipsis-v{
+    margin-top: 22px;
+    font-weight: normal;
+    color: black;
+    cursor: pointer;
+  }
+  .music-div{
+    margin-right: 30px;
+  }
+  .music-div:hover{
+    cursor: pointer;
+  }
+  .music-info{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .music-img{
+    width: 50px;
+    height: 50px;
+  }
+  .music-img img{
+    width: 40px;
+    height: 40px;
+    margin: 2px 5px;
+    padding: 1px;
+  }
+  .music-name{
+    width: 50%;
+    padding: 0 5px;
+    height: 50px;
+  }
+  .music-name h6{
+    margin-top: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    line-height: 15px;
+    
+  }
+  .music-name p{
+    font-size: 16px;
+    line-height: 1px;
+    letter-spacing: 0.5px;
+    color: #000;
+    cursor: pointer;
+  }
+  .music-box hr{
+    width: 100%;
+    margin-top: 4px !important;
+    margin-bottom: 6px !important;
+  }
+  .music-action{
+    float: right;
+    margin-left: auto; 
+  }
+  .music-action i{
+    margin: 10px;
+  }
+  .music-genre{
+      height:30px;
+  }
+    .music-genre p {
+        color: white;
+        border-radius: 20%;
+        padding: 5px;
+        background-color: #CCCCCC;
+    }

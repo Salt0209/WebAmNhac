@@ -1,0 +1,107 @@
+﻿@model IEnumerable<BTL_LWNC_WebAmNhac.Models.Song>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Songs";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Tên bài hát
+            </th>
+            <th>
+                Nghệ sĩ
+            </th>
+            <th>
+                Lời bài hát
+            </th>
+            <th>
+                Ảnh bìa
+            </th>
+            <th>
+                Nguồn
+            </th>
+            <th>
+                Thể loại
+            </th>
+            <th>
+                Lượt xem
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artist.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lyric)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thumbnail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Url)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ViewCount)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="title"><h4>Tất cả bài hát</h4></div>
+<div class="music-box">
+    @foreach (var item in Model)
+    {
+        <div class="music-div">
+            <div class="music-info">
+                <div class="music-img">
+                    <img src="@item.Thumbnail">
+                </div>
+                <div class="music-name">
+                    <h6>@item.Name</h6>
+                    <p>@item.Artist?.Name</p>
+                </div>
+                <div class="music-genre">
+                    <p>@item.Genre?.Name</p>
+                </div>
+                <div class="music-action">
+                    <i class="fa fa-play" aria-hidden="true"></i>
+                    <i class="fa fa-clone" aria-hidden="true"></i>
+                    <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+                </div>
+            </div>
+            <hr>
+        </div>
+    }
+</div>

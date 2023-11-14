@@ -1,0 +1,5 @@
+﻿Tông màu:
+
+Chủ đạo: #0073e6 (Xanh da trời)
+Màu phụ: #ff3399 (Hồng)
+Màu nền: #ffffff (Trắng)

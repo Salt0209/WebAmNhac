@@ -1,0 +1,19 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<BTL_LWNC_WebAmNhac.Models.Genre>
+
+<div class="left-side-bar">
+    <ul>
+        <li><a class="active" href="#khampha">Khám phá</a></li>
+        <li><a href="#bxh">Bảng xếp hạng</a></li>
+        <li><a href="#thuvien" style="border-bottom: 1px solid #ccc;">Thư viện</a></li>
+        @foreach (var item in Model)
+        {
+            <li><a href="#news">@item.Name</a></li>
+        }
+    </ul>
+</div>
+
