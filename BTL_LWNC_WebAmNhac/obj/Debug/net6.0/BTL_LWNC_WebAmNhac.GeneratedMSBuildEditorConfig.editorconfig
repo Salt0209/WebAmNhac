@@ -128,6 +128,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/UserPlaylists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBsYXlsaXN0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/UserPlaylists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBsYXlsaXN0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/UserPlaylists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBsYXlsaXN0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/UserPlaylists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBsYXlsaXN0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/UserPlaylists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclBsYXlsaXN0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/Users/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -150,6 +170,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/Users/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/Users/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [F:/study/lwnc/BTL_LWNC_WebAmNhac/BTL_LWNC_WebAmNhac/Views/_ViewImports.cshtml]

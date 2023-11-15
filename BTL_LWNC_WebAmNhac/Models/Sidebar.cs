@@ -17,7 +17,10 @@ namespace BTL_LWNC_WebAmNhac.Models
             {
                 return View(_context.Genre.ToList());
             }
-            else { return View(); }
+            else { 
+                var defaultModel = new List<Genre>(); // Change the type to match your model
+                return View(defaultModel);
+            }
         }
     }
 }

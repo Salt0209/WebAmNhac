@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7i5OLIugCzcRRo/PxSBjelpcS5t7Y19TpkqBfUh5v6g=",
+  "Hash": "QE7HaBZudCRdwrWihizOBn7RPhNfwegpjXbiPWEZJwQ=",
   "Source": "BTL_LWNC_WebAmNhac",
   "BasePath": "_content/BTL_LWNC_WebAmNhac",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\color.txt"
+    },
+    {
+      "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\LoginRegister.css",
+      "SourceId": "BTL_LWNC_WebAmNhac",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\",
+      "BasePath": "_content/BTL_LWNC_WebAmNhac",
+      "RelativePath": "css/LoginRegister.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\LoginRegister.css"
     },
     {
       "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\main.css",

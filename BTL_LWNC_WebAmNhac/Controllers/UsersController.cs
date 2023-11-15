@@ -52,10 +52,12 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 		{
 			return View();
 		}
-		public IActionResult Logout()
+		public async Task<IActionResult> LogOut()
 		{
-			HttpContext.SignOutAsync();
-			return View("Login");
+			//SignOutAsync is Extension method for SignOut    
+			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+			//Redirect to home page    
+			return RedirectToAction("Index", "Home");
 		}
 		[HttpPost]
 		public IActionResult Login(string username, string password)
@@ -69,6 +71,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 			{
 				new Claim(ClaimTypes.Name, user.Name),
 				new Claim(ClaimTypes.Role, user.Role),
+				new Claim(ClaimTypes.NameIdentifier,user.ID.ToString()),
 			};
 
 			System.Diagnostics.Debug.WriteLine($"User registered: {user.ID}");
@@ -78,7 +81,12 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 			HttpContext.SignInAsync(
 			CookieAuthenticationDefaults.AuthenticationScheme,
 			new ClaimsPrincipal(claimsIdentity));
+
 			return RedirectToAction("Index","Home");
+		}
+		public IActionResult Register()
+		{
+			return View();
 		}
 
 		[HttpPost]

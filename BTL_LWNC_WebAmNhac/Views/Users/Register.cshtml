@@ -1,7 +1,8 @@
-﻿
+﻿@*
+	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 @{
-	ViewData["Title"] = "Login";
-
+	ViewData["Title"] = "Register";
 }
 <div class="login-container">
 	<div class="row">
@@ -10,10 +11,10 @@
 				<div class="panel-heading">
 					<div class="row">
 						<div class="col-xs-6">
-							<a href="/Users/Login" class="active" id="login-form-link">Login</a>
+							<a href="/Users/Login"  id="login-form-link">Login</a>
 						</div>
 						<div class="col-xs-6">
-							<a href="/Users/Register" id="register-form-link">Đăng ký</a>
+							<a href="/Users/Register" class="active" id="register-form-link">Đăng ký</a>
 						</div>
 					</div>
 					<hr>
@@ -79,22 +80,18 @@
 </div>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
-	$(function () {
-
-		$('#login-form-link').click(function (e) {
-			$("#login-form").delay(100).fadeIn(100);
-			$("#register-form").fadeOut(100);
-			$('#register-form-link').removeClass('active');
-			$(this).addClass('active');
-			e.preventDefault();
-		});
-		$('#register-form-link').click(function (e) {
-			$("#register-form").delay(100).fadeIn(100);
-			$("#login-form").fadeOut(100);
-			$('#login-form-link').removeClass('active');
-			$(this).addClass('active');
-			e.preventDefault();
-		});
-
+	$('#login-form-link').click(function (e) {
+		$("#login-form").delay(100).fadeIn(100);
+		$("#register-form").fadeOut(100);
+		$('#register-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
+	});
+	$('#register-form-link').click(function (e) {
+		$("#register-form").delay(100).fadeIn(100);
+		$("#login-form").fadeOut(100);
+		$('#login-form-link').removeClass('active');
+		$(this).addClass('active');
+		e.preventDefault();
 	});
 </script>

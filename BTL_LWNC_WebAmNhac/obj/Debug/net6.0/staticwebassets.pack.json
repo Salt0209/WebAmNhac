@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\BTL_LWNC_WebAmNhac.bundle.scp.css"
     },
     {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\LoginRegister.css",
+      "PackagePath": "staticwebassets\\css\\LoginRegister.css"
+    },
+    {
       "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\color.txt",
       "PackagePath": "staticwebassets\\css\\color.txt"
     },

@@ -1,4 +1,7 @@
 ﻿using BTL_LWNC_WebAmNhac.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -14,12 +17,20 @@ namespace BTL_LWNC_WebAmNhac.Models
         }
         public IViewComponentResult Invoke()
         {
-            int userID =1 ;
-            if (_context.Playlist != null)
+            
+            if (User.Identity.IsAuthenticated)
             {
-                return View(_context.Playlist.Where(p=>p.UserID== userID).ToList());
+                var userClaims = User.Identity as ClaimsIdentity;
+                var userID = int.Parse(userClaims.FindFirst(ClaimTypes.NameIdentifier).Value); ;
+                var username = User.Identity.Name;
+                return View(_context.Playlist.Where(p => p.UserID == userID).ToList());
             }
-            else { return View(); }
+            
+            else
+            {
+                var defaultModel = new List<Playlist>();
+                return View(defaultModel);
+            }
         }
     }
 }
