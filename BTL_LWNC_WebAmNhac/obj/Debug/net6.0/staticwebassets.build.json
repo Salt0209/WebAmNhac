@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UCZw3XXc69mqw+Fcsj7CikwZh/ie6NGEsJ098FRkcnY=",
+  "Hash": "7i5OLIugCzcRRo/PxSBjelpcS5t7Y19TpkqBfUh5v6g=",
   "Source": "BTL_LWNC_WebAmNhac",
   "BasePath": "_content/BTL_LWNC_WebAmNhac",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\main.css"
+    },
+    {
+      "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\showPlaylist.css",
+      "SourceId": "BTL_LWNC_WebAmNhac",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\",
+      "BasePath": "_content/BTL_LWNC_WebAmNhac",
+      "RelativePath": "css/showPlaylist.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\showPlaylist.css"
     },
     {
       "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\site.css",
@@ -595,6 +612,23 @@
       "OriginalItemSpec": "wwwroot\\image\\vet100px.png"
     },
     {
+      "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\js\\showPlaylist.js",
+      "SourceId": "BTL_LWNC_WebAmNhac",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\",
+      "BasePath": "_content/BTL_LWNC_WebAmNhac",
+      "RelativePath": "js/showPlaylist.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\showPlaylist.js"
+    },
+    {
       "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\js\\site.js",
       "SourceId": "BTL_LWNC_WebAmNhac",
       "SourceType": "Discovered",
@@ -610,6 +644,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\js\\song.js",
+      "SourceId": "BTL_LWNC_WebAmNhac",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\",
+      "BasePath": "_content/BTL_LWNC_WebAmNhac",
+      "RelativePath": "js/song.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\song.js"
     },
     {
       "Identity": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

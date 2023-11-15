@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\main.css"
     },
     {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\showPlaylist.css",
+      "PackagePath": "staticwebassets\\css\\showPlaylist.css"
+    },
+    {
       "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -133,8 +137,16 @@
       "PackagePath": "staticwebassets\\image\\vet100px.png"
     },
     {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\js\\showPlaylist.js",
+      "PackagePath": "staticwebassets\\js\\showPlaylist.js"
+    },
+    {
       "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\js\\song.js",
+      "PackagePath": "staticwebassets\\js\\song.js"
     },
     {
       "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\lib\\bootstrap\\LICENSE",

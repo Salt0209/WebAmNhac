@@ -101,11 +101,13 @@
     }
     .header .account-container .logout-btn{
         margin-right:2px;
-        color: white;
     }
-    .header .account-container .logout-btn:hover{
-        cursor:pointer;
-    }
+        .header .account-container .logout-btn i{
+            color:white
+        }
+        .header .account-container .logout-btn:hover {
+            cursor: pointer;
+        }
 
     .header .account-container #Dangnhap {
         border-left: 2px solid white; /* Add a right border with your desired style and color */

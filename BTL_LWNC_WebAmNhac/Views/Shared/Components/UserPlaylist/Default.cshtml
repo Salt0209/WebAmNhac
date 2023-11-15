@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<BTL_LWNC_WebAmNhac.Models.Playlist>
+
+<div class="list-container" id="list-container">
+    <!-- Your list content goes here -->
+    <h3 class="current-playlist-heading">Current Playlist</h3>
+    <a href="#" class="add-playlist-link" onclick="addPlaylist()">Add Playlist</a>
+    <form id="playlistForm">
+        @foreach(var item in Model)
+        {
+            <input type="checkbox" id=`item{@item.ID}` name=`item{@item.ID}`>
+            <label for=`item{@item.ID}`>@item.Name</label>
+
+            <br>
+        }
+
+
+        <!-- Save button -->
+        <button type="button" class="save-button" onclick="savePlaylist()">Save</button>
+    </form>
+</div>

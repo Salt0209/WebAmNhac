@@ -66,8 +66,13 @@
   .music-action{
     float: right;
     margin-left: auto; 
+    display:flex;
+    align-items:center;
+    flex-wrap:nowrap;
   }
-  .music-action i{
+  .music-action div{
+    width:min-content;
+    padding:0;
     margin: 10px;
   }
   .music-genre{
