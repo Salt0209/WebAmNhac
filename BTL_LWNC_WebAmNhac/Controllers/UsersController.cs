@@ -60,7 +60,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 			return RedirectToAction("Index", "Home");
 		}
 		[HttpPost]
-		public IActionResult Login(string username, string password)
+		public async Task<IActionResult> Login(string username, string password)
 		{
 			var user = _context.User.Where(p => p.Name == username && p.Password == password).FirstOrDefault<User>();
 			if (user == null || _context.User == null)
@@ -78,7 +78,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 
 			var claimsIdentity = new ClaimsIdentity(
 			claims, CookieAuthenticationDefaults.AuthenticationScheme);
-			HttpContext.SignInAsync(
+			await HttpContext.SignInAsync(
 			CookieAuthenticationDefaults.AuthenticationScheme,
 			new ClaimsPrincipal(claimsIdentity));
 
