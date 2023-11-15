@@ -46,4 +46,7 @@ INSERT INTO [Song]([Name],[ArtistID],[Lyric],[Thumbnail],[Url],[GenreID]) VALUES
 INSERT INTO [Song]([Name],[ArtistID],[Lyric],[Thumbnail],[Url],[GenreID]) VALUES(N'Sunflower',N'9',N'Chưa có','/image/sunflower.jpg','/media/sunflower.mp3','5')
 
 GO
-
+INSERT INTO [PlaylistDetail]([PlaylistID],[SongID]) VALUES(1,2)
+INSERT INTO [PlaylistDetail]([PlaylistID],[SongID]) VALUES(1,3)
+INSERT INTO [PlaylistDetail]([PlaylistID],[SongID]) VALUES(1,4)
+INSERT INTO [PlaylistDetail]([PlaylistID],[SongID]) VALUES(2,1)
