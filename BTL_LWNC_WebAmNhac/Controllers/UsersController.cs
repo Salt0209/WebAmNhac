@@ -10,6 +10,7 @@ using BTL_LWNC_WebAmNhac.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using System.Xml.Linq;
 
 namespace BTL_LWNC_WebAmNhac.Controllers
 {
@@ -17,13 +18,13 @@ namespace BTL_LWNC_WebAmNhac.Controllers
     {
         private readonly BTL_LWNC_WebAmNhacContext _context;
 
-        public UsersController(BTL_LWNC_WebAmNhacContext context)
-        {
-            _context = context;
-        }
+		public UsersController(BTL_LWNC_WebAmNhacContext context)
+		{
+			_context = context;
+		}
 
-        // GET: Users
-        public async Task<IActionResult> Index()
+		// GET: Users
+		public async Task<IActionResult> Index()
         {
               return _context.User != null ? 
                           View(await _context.User.ToListAsync()) :
@@ -57,9 +58,9 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 			return View("Login");
 		}
 		[HttpPost]
-        public IActionResult Login(string name, string password)
+        public IActionResult Login(string username, string password)
         {
-            var user = _context.User.Where(p => p.Name == name && p.Password == password).FirstOrDefault<User>();
+            var user = _context.User.Where(p => p.Name == username && p.Password == password).FirstOrDefault<User>();
 			if (user == null || _context.User == null)
 			{
 				return View();
@@ -69,6 +70,9 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 			    new Claim(ClaimTypes.Name, user.Name),
 			    new Claim(ClaimTypes.Role, user.Role),
 		    };
+
+			System.Diagnostics.Debug.WriteLine($"User registered: {user.ID}");
+
 			var claimsIdentity = new ClaimsIdentity(
 		    claims, CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.SignInAsync(
@@ -77,8 +81,24 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             return RedirectToAction("Index","Home");
 		}
 
-        // GET: Users/Create
-        public IActionResult Create()
+		[HttpPost]
+		public IActionResult Register(string username,string email, string password)
+		{
+			var newUser = new User
+			{
+				Name = username,
+                Email = email,
+				Password = password,
+                Role = "User"
+			};
+
+			_context.User.Add(newUser);
+			_context.SaveChanges();
+			return RedirectToAction("Login", "Users");
+		}
+
+		// GET: Users/Create
+		public IActionResult Create()
         {
             return View();
         }

@@ -97,7 +97,14 @@
 
     .header .account-container a {
         display: inline-block;
-        margin: 0 20px;
+        margin: 0 20px 0 2px;
+    }
+    .header .account-container .logout-btn{
+        margin-right:2px;
+        color: white;
+    }
+    .header .account-container .logout-btn:hover{
+        cursor:pointer;
     }
 
     .header .account-container #Dangnhap {

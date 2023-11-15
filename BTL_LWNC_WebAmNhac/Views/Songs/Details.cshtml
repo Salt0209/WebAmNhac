@@ -149,22 +149,7 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     var audioPlayer = document.getElementById('custom-audio-player');
-    var playButton = document.getElementById('play-button');
-    var pauseButton = document.getElementById('pause-button');
-    var downloadButton = document.getElementById('download-button');
     var speedSelect = document.getElementById('speed-select');
-
-    downloadButton.addEventListener('click', function () {
-        // Add logic to trigger the download of the audio file
-        var audioFileUrl = '@Url.Content(Model.Url)';
-        var a = document.createElement('a');
-        a.href = audioFileUrl;
-        a.download ="your_file_name"+"@Model.ID"+".mp3" ; // Set the desired file name
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    });
     speedSelect.addEventListener('change', function () {
         // Get the selected playback speed from the dropdown
         var selectedSpeed = speedSelect.value;
@@ -173,9 +158,52 @@
     });
 
 </script>
+<script>
+    function loc_xoa_dau(str) {
+        // Gộp nhiều dấu space thành 1 space
+        str = str.replace(/\s+/g, ' ');
+        // loại bỏ toàn bộ dấu space (nếu có) ở 2 đầu của chuỗi
+        str = str.trim();
+        // bắt đầu xóa dấu tiếng việt  trong chuỗi
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        str = str.replace(/đ/g, "d");
+        str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+        str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+        str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+        str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+        str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+        str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+        str = str.replace(/Đ/g, "D");
+        return str;
+    }
+    var songName = loc_xoa_dau('@Html.Raw(@Model.Name)').replace(/\s/g, '');
+    var downloadButton = document.getElementById('download-button');
+
+    // Now modelName contains the value of @Model.Name as a JavaScript string
+    console.log('Model Name:', songName);
+    downloadButton.addEventListener('click', function () {
+        // Add logic to trigger the download of the audio file
+        var audioFileUrl = '@Url.Content(Model.Url)';
+        var a = document.createElement('a');
+        a.href = audioFileUrl;
+        a.download = songName + ".mp3"; // Set the desired file name
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+
+</script>
 
 
 <script>
+    var playButton = document.getElementById('play-button');
+    var pauseButton = document.getElementById('pause-button');
     $(document).ready(function () {
         var audio = $("#custom-audio-player")[0]; // Get the audio element
         var playButton = $("#play-button"); // Get the play button element
