@@ -1,0 +1,85 @@
+﻿@model List<BTL_LWNC_WebAmNhac.Models.PlaylistDetail>
+
+@{
+    ViewData["Title"] = "Details";
+    int currentPlaylist = -1;
+}
+
+<h1>Details</h1>
+
+<div class="library">
+    <h4>PlaylistDetail</h4>
+    <hr />
+@*     @foreach (var group in Model.GroupBy(p => p.PlaylistID))
+    {
+        <div>
+            <h3>@group.First().Playlist.Name</h3>
+            <ul>
+                @foreach (var playlistDetail in group)
+                {
+                <li>@playlistDetail.Song.Title</li>
+                }
+            </ul>
+        </div>
+    } *@
+
+    @foreach (var item in Model)
+    {
+        @if (currentPlaylist != item.PlaylistID)
+        {
+            <dl class="row">
+                <dt class="col-sm-2">
+                    PLaylistID:
+                </dt>
+                <dd class="col-sm-10">
+                    @item.PlaylistID
+                    @{
+                        currentPlaylist = item.PlaylistID;
+                    }
+                </dd>
+                <dt class="col-sm-2">
+                    Tên playlist:
+                </dt>
+                <dd class="col-sm-10">
+                    @item.Playlist.Name
+                </dd>
+            </dl>
+            <hr />
+        }
+        <dl class="row">
+            <dt class="col-sm-2">
+                SongID:
+            </dt>
+            <dd class="col-sm-10">
+                @item.SongID
+            </dd>
+            <dt class="col-sm-2">
+                Tên bài hát:
+            </dt>
+            <dd class="col-sm-10">
+                @item.Song.Name
+            </dd>
+            <a value="Delete" asp-action="Delete" asp-route-playlistID="@item.PlaylistID" asp-route-songID="@item.SongID"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        </dl>
+
+
+        <div class="delSongFromLib" data-id="123" data-songid="456">Delete</div>
+    }
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $(".library").on("click", ".delSongFromLib", function () {
+            var playlistID = $(this).data("id");
+            var songID = $(this).data("songid");
+            console.log("playlistID=" + playlistID + "; songID="+songID);
+        });
+    });
+</script>

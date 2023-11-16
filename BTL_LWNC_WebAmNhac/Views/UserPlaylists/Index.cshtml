@@ -1,7 +1,14 @@
-﻿@model IEnumerable<BTL_LWNC_WebAmNhac.Models.Playlist>
+﻿@using System.Security.Claims;
+@model IEnumerable<BTL_LWNC_WebAmNhac.Models.Playlist>
 
 @{
     ViewData["Title"] = "Index";
+    var userID = -1;
+    if (User.Identity.IsAuthenticated)
+    {
+        var userClaims = User.Identity as ClaimsIdentity;
+        userID = int.Parse(userClaims.FindFirst(ClaimTypes.NameIdentifier).Value);
+    }
 }
 
 <h1>Thư viện</h1>
@@ -16,6 +23,56 @@
                 <td>@claim.Value</td>
             </tr>
         }
+    </table>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Tên playlist
+                </th>
+                <th>
+                    Mô tả
+                </th>
+                <th>
+                    Ảnh bìa
+                </th>
+                <th>
+                    Người đăng
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Where(p => p.User.ID == userID))
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Detail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thumbnail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-controller="PlaylistDetails" asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 }
 

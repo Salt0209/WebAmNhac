@@ -1,23 +1,27 @@
-﻿function showList(event) {
+﻿function showList(event,songID) {
     var listContainer = document.getElementById('list-container');
 
-    // Get cursor coordinates
-    var x = event.pageX;
-    var y = event.pageY;
+    // Get button coordinates
+    var button = event.currentTarget; // The button that was clicked
+    var buttonRect = button.getBoundingClientRect();
 
-    // Set list position
-    listContainer.style.left = x + 'px';
-    listContainer.style.top = y + 'px';
+    // Get the current scroll position
+    var scrollX = window.scrollX || window.pageXOffset;
+    var scrollY = window.scrollY || window.pageYOffset;
+
+    // Set list position based on button coordinates and scroll position
+    listContainer.style.left = buttonRect.left + scrollX + 'px';
+    listContainer.style.top = buttonRect.bottom + scrollY + 'px'; // Adjust as needed
 
     // Display the list
     listContainer.style.display = 'block';
 }
 
 // Hide the list when clicking outside of the list and add-playlist icon
-document.addEventListener('click', function (event) {
+document.addEventListener('click', function (event,songID) {
     var listContainer = document.getElementById('list-container');
     var playlistIcon = document.querySelectorAll('.fa-plus-square-o');
-    var form = document.getElementById('playlistForm');
+    var form = document.getElementById('userPlaylist');
 
     var isClickedOn = false;
 
@@ -34,19 +38,4 @@ document.addEventListener('click', function (event) {
     }
 });
 
-function savePlaylist() {
-    var form = document.getElementById('playlistForm');
-    var selectedItems = [];
 
-    // Iterate over the checkboxes to find the selected items
-    form.querySelectorAll('input[type="checkbox"]:checked').forEach(function (checkbox) {
-        selectedItems.push(checkbox.name);
-    });
-
-    // You can do something with the selected items here
-    console.log('Selected items:', selectedItems);
-
-    // For demonstration, hide the list after saving
-    var listContainer = document.getElementById('list-container');
-    listContainer.style.display = 'none';
-}

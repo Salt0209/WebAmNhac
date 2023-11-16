@@ -23,5 +23,13 @@ namespace BTL_LWNC_WebAmNhac.Data
         public DbSet<BTL_LWNC_WebAmNhac.Models.Genre>? Genre { get; set; }
 
         public DbSet<BTL_LWNC_WebAmNhac.Models.User>? User { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PlaylistDetail>()
+                .HasKey(pd => new { pd.PlaylistID, pd.SongID });
+        }
+
+        public DbSet<BTL_LWNC_WebAmNhac.Models.PlaylistDetail>? PlaylistDetail { get; set; }
     }
 }

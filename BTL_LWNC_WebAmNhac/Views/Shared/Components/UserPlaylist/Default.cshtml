@@ -8,16 +8,15 @@
 <div class="list-container" id="list-container">
     <!-- Your list content goes here -->
     <h3 class="current-playlist-heading">Current Playlist</h3>
-    <a href="#" class="add-playlist-link" onclick="addPlaylist()">Add Playlist</a>
-    <form id="playlistForm">
-        @foreach(var item in Model)
-        {
-            <input type="checkbox" id=`item{@item.ID}` name=`item{@item.ID}`>
-            <label for=`item{@item.ID}`>@item.Name</label>
-
-            <br>
-        }
+    <a class="add-playlist-link" href="@Url.Action("Create", "Playlists")">Add Playlist</a>
+    <div class="userPlaylist" id="userPlaylist">
+    @foreach(var item in Model){
+        <div class="list-item" id="@item.ID" data-id="@item.ID">
+            @item.Name
+        </div>
+    }
         <!-- Save button -->
-        <button type="button" class="save-button" onclick="savePlaylist()">Save</button>
-    </form>
+@*         <button type="button" class="save-button" onclick="savePlaylist()">Save</button> *@
+    </div>
 </div>
+

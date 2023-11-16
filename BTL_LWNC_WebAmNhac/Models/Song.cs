@@ -22,5 +22,8 @@ namespace BTL_LWNC_WebAmNhac.Models
         public virtual Artist? Artist { get; set; }
 
         public virtual Genre? Genre { get; set; }
+
+        public virtual ICollection<PlaylistDetail> PlaylistDetails { get; set; } = new List<PlaylistDetail>();
+
     }
 }

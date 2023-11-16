@@ -9,8 +9,240 @@
       "PackagePath": "staticwebassets\\css\\LoginRegister.css"
     },
     {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\.DS_Store",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\.DS_Store"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.js"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\bootstrap-4.1.3\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap-4.1.3\\js\\bootstrap.min.js.map"
+    },
+    {
       "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\color.txt",
       "PackagePath": "staticwebassets\\css\\color.txt"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\HELP-US-OUT.txt",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\HELP-US-OUT.txt"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\css\\font-awesome.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\css\\font-awesome.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\css\\font-awesome.min.css",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\css\\font-awesome.min.css"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\fonts\\FontAwesome.otf",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\fonts\\FontAwesome.otf"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.eot",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.eot"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.svg",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.svg"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.ttf",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.ttf"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff2",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\fonts\\fontawesome-webfont.woff2"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\animated.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\animated.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\bordered-pulled.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\bordered-pulled.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\core.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\core.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\fixed-width.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\fixed-width.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\font-awesome.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\font-awesome.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\icons.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\icons.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\larger.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\larger.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\list.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\list.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\mixins.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\mixins.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\path.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\path.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\rotated-flipped.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\rotated-flipped.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\screen-reader.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\screen-reader.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\stacked.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\stacked.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\less\\variables.less",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\less\\variables.less"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_animated.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_animated.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_bordered-pulled.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_bordered-pulled.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_core.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_core.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_fixed-width.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_fixed-width.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_icons.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_icons.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_larger.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_larger.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_list.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_list.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_mixins.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_mixins.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_path.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_path.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_rotated-flipped.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_rotated-flipped.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_screen-reader.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_screen-reader.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_stacked.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_stacked.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\_variables.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\_variables.scss"
+    },
+    {
+      "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\font-awesome-4.7.0\\scss\\font-awesome.scss",
+      "PackagePath": "staticwebassets\\css\\font-awesome-4.7.0\\scss\\font-awesome.scss"
     },
     {
       "Id": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\css\\main.css",

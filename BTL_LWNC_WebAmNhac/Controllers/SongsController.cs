@@ -26,6 +26,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             return View(await bTL_LWNC_WebAmNhacContext.ToListAsync());
         }
 
+
         // GET: Songs/Details/5
         public async Task<IActionResult> Details(int? id)
         {

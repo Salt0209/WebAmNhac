@@ -96,8 +96,8 @@
                 <div class="music-action">
                     <div id="playIcon" onclick="redirectToDetails('@item.ID')"><i class="fa fa-play" aria-hidden="true"></i></div>
                     <div id="playInNewTab" onclick="playInNewTab('@item.ID')"><i class="fa fa-clone" aria-hidden="true"></i></div>
-                    <div class="add-playlist" onclick="showList(event)">
-                        <i class="fa fa-plus-square-o" aria-hidden="true" onclick="showList(event, '')"></i>
+                    <div class="add-playlist" onclick="showList(event,'@item.ID')">
+                        <i class="fa fa-plus-square-o" aria-hidden="true" onclick="showList(event, '@item.ID');addPlaylist(event,'@item.ID')"></i>
                     </div>
                 </div>
             </div>
@@ -107,5 +107,35 @@
 </div>
 
 @await Component.InvokeAsync("UserPlaylist")
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addPlaylist(event, songID) {
+        console.log("go to func...");
+        $(".userPlaylist").on("click", ".list-item", function () {
+            var playlistID = $(this).data("id");
+            console.log("playlistID add to playlist:", playlistID);
+            console.log("songID add to playlist:", songID);
+            var url = '/PlaylistDetails/addToPlaylistDetail/?playlistID=' + playlistID + '&songID=' + songID;
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        console.log("success add to playlist detail");
+                    } else {
+                        console.log("fail01");
+                        alert("Failed to add");
+                    }
+                },
+                error: function () {
+                    console.log("fail00");
+                    alert("Have a error while adding");
+                }
+            });
+        });
+    }
+</script>
 
 

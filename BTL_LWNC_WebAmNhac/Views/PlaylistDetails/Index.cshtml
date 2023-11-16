@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BTL_LWNC_WebAmNhac.Models.PlaylistDetail>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Playlist ID</th>
+            <th>Playlist</th>
+            <th>SongID</th>
+            <th>Tên bài hát</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.PlaylistID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Playlist.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.SongID)</td>
+            <td>@Html.DisplayFor(modelItem => item.Song.Name)</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.PlaylistID">Details</a> |
+                <a asp-action="Delete" asp-route-playlistID="@item.PlaylistID" asp-route-songID="@item.SongID">Delete</a>
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

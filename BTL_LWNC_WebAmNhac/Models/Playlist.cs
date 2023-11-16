@@ -18,5 +18,7 @@ namespace BTL_LWNC_WebAmNhac.Models
         public int ViewCount { get; set; }
 
         public virtual User? User { get; set; }
+
+        public virtual ICollection<PlaylistDetail> PlaylistDetails { get; set; } = new List<PlaylistDetail>();
     }
 }

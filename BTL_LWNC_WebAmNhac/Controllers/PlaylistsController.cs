@@ -144,13 +144,13 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         // POST: Playlists/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int playlistID, int songID)
         {
             if (_context.Playlist == null)
             {
                 return Problem("Entity set 'BTL_LWNC_WebAmNhacContext.Playlist'  is null.");
             }
-            var playlist = await _context.Playlist.FindAsync(id);
+            var playlist = await _context.Playlist.FindAsync(playlistID,songID);
             if (playlist != null)
             {
                 _context.Playlist.Remove(playlist);
