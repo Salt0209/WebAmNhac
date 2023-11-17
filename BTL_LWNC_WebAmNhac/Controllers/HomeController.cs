@@ -37,13 +37,11 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         {
             var modelSong = _context.Song?.AsNoTracking().OrderByDescending(p => p.ViewCount).Include(p => p.Artist).Take(5).ToList();
             var modelPlaylist = _context.Playlist?.AsNoTracking().OrderByDescending(p => p.ViewCount).Take(5).ToList();
-            var modelArtist = _context.Artist?.Take(5).ToList();
 
             var viewModel = new Home
             {
                 Songs = modelSong,
-                Playlists = modelPlaylist,
-                Artists = modelArtist
+                Playlists = modelPlaylist
             };
             return View(viewModel);
         }

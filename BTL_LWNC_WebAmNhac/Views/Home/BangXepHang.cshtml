@@ -14,7 +14,7 @@
 <!-- Danh sách bài hát -->
 
 <div class="title">
-    <h4>Bài hát</h4>
+    <h4>Top bài hát được nghe nhiều nhất</h4>
     <h5><a href="/Songs">Hiện tất cả></a></h5>
 </div>
 <div class="music-box">
@@ -23,6 +23,7 @@
         var item = Model.Songs[i];
         <div class="music-div">
             <div>STT: @(i+1)</div>
+            <div>View: @item.ViewCount</div>
             <div class="music-info">
                 <div class="music-img">
                     <img src="@item.Thumbnail" alt="" runat="server" />
@@ -41,7 +42,7 @@
 
 <!-- Danh sách playlist -->
 <div class="title">
-    <h4>Playlist</h4>
+    <h4>Top playlist được nghe nhiều nhất</h4>
     <h5><a href="/Songs">Hiện tất cả></a></h5>
 </div>
 <div class="playlist-container">
@@ -51,6 +52,7 @@
 
         <div class="playlist-div">
             <div>STT: @(i+1)</div>
+            <div>View: @item.ViewCount</div>
             <div class="image-container">
                 <img src="@item.Thumbnail" class="playlist-img" alt="" runat="server" />
             </div>
@@ -67,24 +69,3 @@
     }
 </div>
 <!-- Kết thúc playlist -->
-<!-- Danh sách nghệ sĩ -->
-<div class="title">
-    <h4>Nghệ sĩ</h4>
-    <h5><a href="/Artists">Hiện tất cả></a></h5>
-</div>
-<div class="artist-container">
-    @for (int i = 0; i < Model.Artists.Count; i++)
-    {
-        var item = Model.Artists[i];
-
-        <div class="artist-div">
-            <div>STT: @(i+1)</div>
-            <div class="artist-img-container">
-                <img src="@item.Image" class="artist-img" alt="" runat="server" />
-            </div>
-
-            <h1>@item.Name</h1>
-            <p>@item.Country</p>
-        </div>
-    }
-</div>
