@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj": {}
+    "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj": {}
   },
   "projects": {
-    "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj": {
+    "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj",
+        "projectUniqueName": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj",
         "projectName": "BTL_LWNC_WebAmNhac",
-        "projectPath": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj",
+        "projectPath": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\obj\\",
+        "outputPath": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",

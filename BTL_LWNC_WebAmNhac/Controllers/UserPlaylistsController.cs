@@ -49,7 +49,6 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         // GET: UserPlaylists/Create
         public IActionResult Create()
         {
-            ViewData["UserID"] = new SelectList(_context.User, "ID", "ID");
             return View();
         }
 
@@ -58,15 +57,22 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Name,Detail,Thumbnail,UserID,ViewCount")] Playlist playlist)
+        public async Task<IActionResult> Create(int id, [Bind("Name,Detail,Thumbnail")] Playlist playlist)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(playlist);
+                var newPlaylist = new Playlist()
+                {
+                    Name = playlist.Name,
+                    Detail = playlist.Detail,
+                    Thumbnail = playlist.Thumbnail,
+                    UserID = id,
+                    ViewCount = 0
+                };
+                _context.Add(newPlaylist);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserID"] = new SelectList(_context.User, "ID", "ID", playlist.UserID);
             return View(playlist);
         }
 

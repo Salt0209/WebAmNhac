@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q+SrIZW8ItoEOmXynluSAnN9PZLJ8YJwXwDXQK89pfWwdaaMf+KQZ6ep4WbKgwTO79IDkvFyvSimACWcw/AMDg==",
+  "dgSpecHash": "HrCghmH1ggB79XUd0cDGoD5gdra0Wh86YuEFuz44ifIaaKtZv/JfGLQW4PmRAeJUtWeE0JqpvDje/MzITA1rbg==",
   "success": true,
-  "projectFilePath": "F:\\study\\lwnc\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj",
+  "projectFilePath": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
