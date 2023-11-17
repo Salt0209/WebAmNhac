@@ -49,7 +49,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             return View(playlistDetail);
         }
         [HttpPost]
-        public JsonResult addToPlaylistDetail(int playlistID, int songID)
+        public async Task<JsonResult> addToPlaylistDetail(int playlistID, int songID)
         {
             var playlistDetail = new PlaylistDetail()
             {
@@ -59,17 +59,14 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 
             _context.PlaylistDetail.Add(playlistDetail);
 
-            // Check the number of entries written to the database
-            var saveChangesResult = _context.SaveChanges();
+            var saveChangesResult = await _context.SaveChangesAsync();
 
             if (saveChangesResult > 0)
             {
-                // If at least one entry was written, the operation was successful
                 return Json(new { success = true });
             }
             else
             {
-                // If no entries were written, the operation failed
                 return Json(new { success = false, errorMessage = "Failed to add to the database." });
             }
         }
@@ -98,10 +95,11 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             return View(playlistDetail);
         }
         [HttpPost]
-        public JsonResult XoaBaiHat(int playlistID,int songID)
+        public async Task<JsonResult> XoaBaiHat(int playlistid, int songid)
         {
-            TempData["Message"] = "";
-            var playlistDetail = _context.PlaylistDetail.Find(playlistID, songID);
+
+            var playlistDetail = await _context.PlaylistDetail.FindAsync(playlistid, songid);
+
             if (playlistDetail != null)
             {
                 _context.PlaylistDetail.Remove(playlistDetail);
@@ -110,7 +108,10 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             {
                 return Json(new { success = false });
             }
-            _context.SaveChanges();
+
+            // Use SaveChangesAsync for asynchronous operation
+            await _context.SaveChangesAsync();
+
             return Json(new { success = true });
         }
         // GET: PlaylistDetails/Delete/5
