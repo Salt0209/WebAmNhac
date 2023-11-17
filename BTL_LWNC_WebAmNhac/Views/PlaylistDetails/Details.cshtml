@@ -6,7 +6,10 @@
 }
 
 <h1>Details</h1>
-
+<hr/>
+<p>
+    @Html.ActionLink("Go to add more songs", "Index", "Songs")
+</p>
 <div class="library">
     <h4>PlaylistDetail</h4>
     <hr />
@@ -27,6 +30,7 @@
     {
         @if (currentPlaylist != item.PlaylistID)
         {
+            <hr />
             <dl class="row">
                 <dt class="col-sm-2">
                     PLaylistID:
@@ -63,7 +67,7 @@
         </dl>
 
 
-        <div class="delSongFromLib" data-id="123" data-songid="456">Delete</div>
+        <div class="delSongFromLib" data-id="@item.PlaylistID" data-songid="@item.SongID">Delete</div>
     }
 </div>
 <div>
@@ -80,6 +84,8 @@
             var playlistID = $(this).data("id");
             var songID = $(this).data("songid");
             console.log("playlistID=" + playlistID + "; songID="+songID);
+
+
         });
     });
 </script>

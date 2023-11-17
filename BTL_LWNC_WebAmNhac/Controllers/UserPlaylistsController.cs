@@ -89,7 +89,6 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserID"] = new SelectList(_context.User, "ID", "ID", playlist.UserID);
             return View(playlist);
         }
 
@@ -125,7 +124,6 @@ namespace BTL_LWNC_WebAmNhac.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserID"] = new SelectList(_context.User, "ID", "ID", playlist.UserID);
             return View(playlist);
         }
 

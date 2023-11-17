@@ -70,7 +70,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 			var claims = new List<Claim>
 			{
 				new Claim(ClaimTypes.Name, user.Name),
-				new Claim(ClaimTypes.Role, user.Role),
+				new Claim(ClaimTypes.Role, user.Role.Trim()),
 				new Claim(ClaimTypes.NameIdentifier,user.ID.ToString()),
 			};
 
