@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YDqwFPD0AJeuQDbovzQYl4WXCrZ19b/B71wFRqrB0Go=",
+  "Hash": "qecALRLyDFK8V1KzrFvkj1aSGPoEhLGfthz4crJ2Kfs=",
   "Source": "BTL_LWNC_WebAmNhac",
   "BasePath": "_content/BTL_LWNC_WebAmNhac",
   "Mode": "Default",
@@ -1528,6 +1528,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\image\\logo.png"
+    },
+    {
+      "Identity": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\image\\logo1.png",
+      "SourceId": "BTL_LWNC_WebAmNhac",
+      "SourceType": "Discovered",
+      "ContentRoot": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\",
+      "BasePath": "_content/BTL_LWNC_WebAmNhac",
+      "RelativePath": "image/logo1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\image\\logo1.png"
     },
     {
       "Identity": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\image\\ngaytho.jpg",

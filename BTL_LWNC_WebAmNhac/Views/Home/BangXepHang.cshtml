@@ -7,41 +7,68 @@
     ViewData["Title"] = "Trang chủ";
 }
 @model Home
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+    }
 
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+</style>
 
 
 
 <!-- Danh sách bài hát -->
 
-<div class="title">
-    <h4>Top bài hát được nghe nhiều nhất</h4>
-    <h5><a href="/Songs">Hiện tất cả></a></h5>
-</div>
-<div class="music-box">
-    @for(int i=0; i < Model.Songs.Count; i++)
-    {
-        var item = Model.Songs[i];
-        <div class="music-div">
-            <div>STT: @(i+1)</div>
-            <div>View: @item.ViewCount</div>
-            <div class="music-info">
-                <div class="music-img">
-                    <img src="@item.Thumbnail" alt="" runat="server" />
-                </div>
-                <div class="music-name">
-                    <h6>@item.Name</h6>
-                    <p>@item.Artist.Name</p>
-                </div>
-            </div>
-            <hr>
-        </div>
-    }
-</div>
+<h2>#Songchart</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Bài hát</th>
+                <th>Nghệ sĩ</th>
+                <th>Thể loại</th>
+                <th>Lượt nghe</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for (int i = 0; i < Model.Playlists.Count; i++)
+        {
+            var item = Model.Songs[i];
+            <tr>
+                <td>@(i+1)</td>
+                <td><a href="@Url.Action("Details", "Songs",new {id = @item.ID})">@item.Name</a></td>
+                <td>@item.Artist.Name</td>
+                <td>@item.Genre.Name</td>
+                <td>@item.ViewCount</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
 
 
 
 <!-- Danh sách playlist -->
-<div class="title">
+@* <div class="title">
     <h4>Top playlist được nghe nhiều nhất</h4>
     <h5><a href="/Songs">Hiện tất cả></a></h5>
 </div>
@@ -67,5 +94,5 @@
             </div>
         </div>
     }
-</div>
+</div> *@
 <!-- Kết thúc playlist -->

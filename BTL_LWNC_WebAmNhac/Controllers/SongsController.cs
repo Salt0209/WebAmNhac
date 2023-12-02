@@ -20,13 +20,14 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         }
 
         // GET: Songs
+        
         public async Task<IActionResult> Index()
         {
             var bTL_LWNC_WebAmNhacContext = _context.Song.Include(s => s.Artist).Include(s => s.Genre);
             return View(await bTL_LWNC_WebAmNhacContext.ToListAsync());
         }
 
-
+        
         // GET: Songs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -43,7 +44,14 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             {
                 return NotFound();
             }
-
+                // Increment the view count
+                if(song.ViewCount == null)
+            {
+                song.ViewCount=0;
+            }
+                song.ViewCount++;
+                // Update the database
+                _context.SaveChanges();
             return View(song);
         }
 

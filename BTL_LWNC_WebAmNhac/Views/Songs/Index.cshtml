@@ -111,8 +111,6 @@
 </div>
 
 @await Component.InvokeAsync("UserPlaylist")
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     function addPlaylist(event, songID) {
         console.log("go to func...");
@@ -142,5 +140,7 @@
         });
     }
 </script>
+
+<script src="/js/showPlaylist.js"></script>
 
 

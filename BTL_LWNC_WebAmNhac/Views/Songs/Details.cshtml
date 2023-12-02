@@ -2,56 +2,60 @@
 
 @{
     ViewData["Title"] = "Details";
+    Layout = "_Songs";
 }
 
 <h1>Details</h1>
+@if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("admin")))
+{
+    <div>
+        <h4>Song</h4>
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Lyric)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Lyric)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Thumbnail)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Thumbnail)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Url)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Url)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Artist)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Artist.Name)
+            </dd>
+            <dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.Genre)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.Genre.Name)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
 
-<div>
-    <h4>Song</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Lyric)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Lyric)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Thumbnail)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Thumbnail)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Url)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Url)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Artist)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Artist.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre.Name)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
 
 <div class="audio-title">@Model.Name</div>
 <div class="audio-playbar">
@@ -61,15 +65,16 @@
     </div>
 
     <div class="audio-row">
-        <audio id="custom-audio-player" src="@Url.Content(Model.Url)" controls></audio>
+        <audio id="custom-audio-player" src="@Url.Content(Model.Url)" autoplay style="display: none;"></audio>
+        <div class="time-container">
+            <input type="range" id="timeSlider" name="timeSlider" min="0" step="1" value="0" max="100"/>
+            <div class="buffer-bar" id="bufferBar" style="display:none"></div>
+        </div>
     </div>
 
     <div class="audio-row button-container">
         <div class="left-button" id="play-button">
             <i class="fa fa-play" aria-hidden="true"></i>
-        </div>
-        <div class="left-button" id="forward-button">
-            <i class="fa fa-fast-forward" aria-hidden="true"></i>
         </div>
         <div class="right-button" >
             <select id="speed-select">
@@ -79,7 +84,8 @@
             </select>
         </div>
         <div class="right-button" id="volume-container">
-            <i class="fa fa-volume-up" aria-hidden="true"></i>
+            <i class="fa fa-volume-up" id="volume-button" aria-hidden="true"></i>
+            <input type="range" id="volume" name="volume" min="0" max="1" step="0.01" value="1">
         </div>
     </div>
 </div>
@@ -87,20 +93,54 @@
     <i id="download-button" class="fa fa-download" aria-hidden="true"></i>
     <p>Tải xuống</p>
 </div>
-<div class="add-container">
-    <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+<div class="add-playlist" onclick="showList(event,'@Model.ID')">
+    <i class="fa fa-plus-square-o" aria-hidden="true" onclick="showList(event, '@Model.ID');addPlaylist(event,'@Model.ID')"></i>
     <p>Thêm vào playlist</p>
 </div>
+
+
 <div class="lyric-container">
     <p>@Model.Lyric</p>
 </div>
+@await Component.InvokeAsync("UserPlaylist")
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addPlaylist(event, songID) {
+        console.log("go to func...");
+        $(".userPlaylist").on("click", ".list-item", function () {
+            var playlistID = $(this).data("id");
+            console.log("playlistID add to playlist:", playlistID);
+            console.log("songID add to playlist:", songID);
+            var url = '/PlaylistDetails/addToPlaylistDetail/?playlistID=' + playlistID + '&songID=' + songID;
+            $.ajax({
+                type: "POST",
+                url: url,
+                dataType: "json",
+                success: function (data) {
+                    if (data.success) {
+                        alert("add successfully");
+                        console.log("success add to playlist detail");
+                    } else {
+                        console.log("fail01");
+                        alert("Failed to add");
+                    }
+                },
+                error: function () {
+                    console.log("fail00");
+                    alert("Have a error while adding");
+                }
+            });
+        });
+    }
+</script>
 
 
 
 <style>
     .audio-playbar {
-        width:900px;
-    display: flex;
+        width: 900px;
+        display: flex;
         flex-direction: column;
         background-color: #f0f0f0;
         padding: 10px;
@@ -144,9 +184,30 @@
         margin-left: 0;
     }
 
+
+    .time-container {
+        margin-top: 10px;
+        position: relative;
+        width: 100%;
+    }
+
+    #timeSlider {
+        width: 100%;
+    }
+
+    .buffer-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 5px;
+        background-color: #ccc;
+        width: 0;
+    }
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+@* Xu ly toc do phat *@
 <script>
     var audioPlayer = document.getElementById('custom-audio-player');
     var speedSelect = document.getElementById('speed-select');
@@ -158,6 +219,8 @@
     });
 
 </script>
+
+@* Xu ly tai xuong *@
 <script>
     function loc_xoa_dau(str) {
         // Gộp nhiều dấu space thành 1 space
@@ -185,7 +248,6 @@
     var downloadButton = document.getElementById('download-button');
 
     // Now modelName contains the value of @Model.Name as a JavaScript string
-    console.log('Model Name:', songName);
     downloadButton.addEventListener('click', function () {
         // Add logic to trigger the download of the audio file
         var audioFileUrl = '@Url.Content(Model.Url)';
@@ -207,7 +269,13 @@
     $(document).ready(function () {
         var audio = $("#custom-audio-player")[0]; // Get the audio element
         var playButton = $("#play-button"); // Get the play button element
-
+        if (audio.paused) {
+            // If audio is paused, play it
+            playButton.find("i").removeClass("fa-play").addClass("fa-pause");
+        } else {
+            // If audio is playing, pause it
+            playButton.find("i").removeClass("fa-pause").addClass("fa-play");
+        }
         // Add a click event listener to the play button
         playButton.on("click", function () {
             if (audio.paused) {
@@ -223,8 +291,92 @@
 
         // Add an event listener for the 'ended' event to reset the play button when the audio finishes
         audio.addEventListener('ended', function () {
-            playButton.find("i").removeClass("fa-pause").addClass("fa-play");
+            playButton.find("i").removeClass("fa-pause").addClass("fa-repeat");
         });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('pageshow', function () {
+            clearSelection();
+        });
+        var audio = document.getElementById('custom-audio-player');
+        var volumeControl = document.getElementById('volume');
+        var volumeButton = $("#volume-button");
+
+        // Set initial volume
+        audio.volume = volumeControl.value;
+
+        // Update volume when the slider changes
+        volumeControl.addEventListener('input', function () {
+            audio.volume = volumeControl.value;
+            if (audio.volume == 0) {
+                volumeButton.removeClass("fa-volume-down").addClass("fa-volume-off");
+            }
+            else if (audio.volume < 0.30) {
+                volumeButton.removeClass("fa-volume-off").addClass("fa-volume-down");
+                volumeButton.removeClass("fa-volume-up").addClass("fa-volume-down");
+            }
+            else {
+                volumeButton.removeClass("fa-volume-down").addClass("fa-volume-up");
+            }
+        });
+
+        // Function to clear selection
+        function clearSelection() {
+            if (window.getSelection) {
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+            }
+        }
+    });
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('pageshow', function () {
+            clearSelection();
+        });
+        var audio = document.getElementById('custom-audio-player');
+        var timeSlider = document.getElementById('timeSlider');
+        var bufferBar = document.getElementById('bufferBar');
+
+        // Update buffer bar
+        audio.addEventListener('progress', function () {
+            if (audio.buffered.length > 0) {
+                var buffered = audio.buffered.end(0);
+                var duration = audio.duration;
+                timeSlider.max = duration;
+                var bufferWidth = (buffered / duration) * 100 + '%';
+                bufferBar.style.width = bufferWidth;
+                timeSlider.style.backgroundSize = bufferWidth + ' 100%'; // Adjust this line
+            }
+        });
+
+        // Update time slider when audio is playing
+        audio.addEventListener('timeupdate', function () {
+            var currentTime = audio.currentTime;
+            var duration = audio.duration;
+            var sliderPosition = (currentTime / duration) * 100 + '%';
+
+            timeSlider.value = currentTime;
+            bufferBar.style.width = sliderPosition;
+        });
+
+        // Seek audio when the slider changes
+        timeSlider.addEventListener('input', function () {
+            var seekTime = timeSlider.value;
+            audio.currentTime = seekTime;
+        });
+        
+
+        // Function to clear selection
+        function clearSelection() {
+            if (window.getSelection) {
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+            }
+        }
     });
 </script>
 

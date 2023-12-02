@@ -353,6 +353,10 @@
       "PackagePath": "staticwebassets\\image\\logo.png"
     },
     {
+      "Id": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\image\\logo1.png",
+      "PackagePath": "staticwebassets\\image\\logo1.png"
+    },
+    {
       "Id": "F:\\BTL\\LWNC\\BTL_LWNC_WebAmNhac\\BTL_LWNC_WebAmNhac\\wwwroot\\image\\ngaytho.jpg",
       "PackagePath": "staticwebassets\\image\\ngaytho.jpg"
     },

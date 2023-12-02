@@ -48,7 +48,9 @@
             <!-- name detail -->
             <div class="playlist-title">
                 <div class="text-bold">
+                    <a href="@Url.Action("Details", "PlaylistDetails",new { id=item.ID})">
                     @item.Name
+                    </a>
                 </div>
                 <div class="text-thin">
                     @item.Detail

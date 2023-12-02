@@ -35,7 +35,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         }
         public async Task<IActionResult> BangXepHang()
         {
-            var modelSong = _context.Song?.AsNoTracking().OrderByDescending(p => p.ViewCount).Include(p => p.Artist).Take(5).ToList();
+            var modelSong = _context.Song?.AsNoTracking().OrderByDescending(p => p.ViewCount).Include(p => p.Artist).Include(p=>p.Genre).Take(5).ToList();
             var modelPlaylist = _context.Playlist?.AsNoTracking().OrderByDescending(p => p.ViewCount).Take(5).ToList();
 
             var viewModel = new Home

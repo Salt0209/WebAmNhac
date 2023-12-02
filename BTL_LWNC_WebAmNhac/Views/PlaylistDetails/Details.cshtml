@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     int currentPlaylist = -1;
+    Layout = "_Songs";
 }
 
 <h1>Details</h1>
@@ -10,10 +11,12 @@
 <p>
     @Html.ActionLink("Go to add more songs", "Index", "Songs")
 </p>
-<div class="library">
-    <h4>PlaylistDetail</h4>
-    <hr />
-@*     @foreach (var group in Model.GroupBy(p => p.PlaylistID))
+@if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("admin")))
+{
+    <div class="library">
+        <h4>PlaylistDetail</h4>
+        <hr />
+        @*     @foreach (var group in Model.GroupBy(p => p.PlaylistID))
     {
         <div>
             <h3>@group.First().Playlist.Name</h3>
@@ -26,60 +29,126 @@
         </div>
     } *@
 
-    @foreach (var item in Model)
-    {
-        @if (currentPlaylist != item.PlaylistID)
+        @foreach (var item in Model)
         {
-            <hr />
+            @if (currentPlaylist != item.PlaylistID)
+            {
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        PLaylistID:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @item.PlaylistID
+                        @{
+                            currentPlaylist = item.PlaylistID;
+                        }
+                    </dd>
+                    <dt class="col-sm-2">
+                        Tên playlist:
+                    </dt>
+                    <dd class="col-sm-10">
+                        @item.Playlist.Name
+                    </dd>
+                </dl>
+                <hr />
+            }
             <dl class="row">
                 <dt class="col-sm-2">
-                    PLaylistID:
+                    SongID:
                 </dt>
                 <dd class="col-sm-10">
-                    @item.PlaylistID
-                    @{
-                        currentPlaylist = item.PlaylistID;
-                    }
+                    @item.SongID
                 </dd>
                 <dt class="col-sm-2">
-                    Tên playlist:
+                    Tên bài hát:
                 </dt>
                 <dd class="col-sm-10">
-                    @item.Playlist.Name
+                    @item.Song.Name
                 </dd>
             </dl>
-            <hr />
-        }
-        <dl class="row">
-            <dt class="col-sm-2">
-                SongID:
-            </dt>
-            <dd class="col-sm-10">
-                @item.SongID
-            </dd>
-            <dt class="col-sm-2">
-                Tên bài hát:
-            </dt>
-            <dd class="col-sm-10">
-                @item.Song.Name
-            </dd>
-        </dl>
-@*           <a value="Delete" asp-action="Delete" asp-route-playlistID="@item.PlaylistID" asp-route-songID="@item.SongID"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            @*           <a value="Delete" asp-action="Delete" asp-route-playlistID="@item.PlaylistID" asp-route-songID="@item.SongID"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
  *@        
-        <div class="delSongFromLib" data-playlistid="@item.PlaylistID" data-songid="@item.SongID">Click Here to Delete</div>
+            <div class="delSongFromLib" data-playlistid="@item.PlaylistID" data-songid="@item.SongID">Click Here to Delete</div>
+        }
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+
+@* User..... *@
+@* --------------------------------------- *@
+
+<div class="audio-title">@Model.FirstOrDefault().Playlist?.Name</div>
+<div class="audio-playbar">
+    <div class="audio-row">
+
+        <img src="@Model.FirstOrDefault().Playlist.Thumbnail" width="100px">
+    </div>
+
+    <div class="audio-row">
+        <audio id="custom-audio-player" src="@Model.FirstOrDefault().Song.Url" autoplay style="display: none;"></audio>
+        <div class="time-container">
+            <input type="range" id="timeSlider" name="timeSlider" min="0" step="1" value="0" max="0">
+            <div class="buffer-bar" id="bufferBar" style="display:none"></div>
+        </div>
+    </div>
+
+    <div class="audio-row button-container">
+        <div class="left-button" id="backward-button">
+            <i class="fa fa-step-backward" aria-hidden="true"></i>
+        </div>
+        <div class="left-button" id="play-button">
+            <i class="fa fa-play" aria-hidden="true"></i>
+        </div>
+        <div class="left-button" id="forward-button">
+            <i class="fa fa-step-forward" aria-hidden="true"></i>
+        </div>
+        <div class="right-button">
+            <select id="speed-select">
+                <option value="1">Normal Speed</option>
+                <option value="1.5">1.5x Speed</option>
+                <option value="2">2x Speed</option>
+            </select>
+        </div>
+        <div class="right-button" id="volume-container">
+            <i class="fa fa-volume-up" id="volume-button" aria-hidden="true"></i>
+            <input type="range" id="volume" name="volume" min="0" max="1" step="0.01" value="1">
+        </div>
+    </div>
+</div>
+
+<div class="music-box" style="width:900px">
+    @foreach (var item in Model)
+    {
+        <div class="music-div">
+            <div class="music-info">
+                <div class="music-img">
+                    <img src="@item.Song.Thumbnail">
+                </div>
+                <div class="music-name">
+                    <h6>@item.Song.Name</h6>
+                    <p>@item.Song.Artist?.Name</p>
+                </div>
+                <div class="music-genre">
+                    <p>@item.Song.Genre?.Name</p>
+                </div>
+                <div class="music-action">
+                    <div id="play-button" onclick="PlayMusicById('@item.Song.Url')"><i class="fa fa-play" aria-hidden="true"></i></div>
+                    <div id="deleteIcon" class="delSongFromLib" data-playlistid="@item.PlaylistID" data-songid="@item.SongID"><i class="fa fa-trash-o" aria-hidden="true"></i></div> 
+                </div>
+            </div>
+            <hr>
+        </div>
     }
 </div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {
-        $(".library").on("click", ".delSongFromLib", function () {
+        $(document).on("click", ".delSongFromLib", function () {
             var playlistID = $(this).data("playlistid");
             var songID = $(this).data("songid");
 
@@ -87,7 +156,7 @@
             if (confirm("Bạn có chắc chắn muốn xoá không?")) {
                 $.ajax({
                     type: "POST",
-                    url: '/PlaylistDetails/XoaBaiHat', 
+                    url: '/PlaylistDetails/XoaBaiHat',
                     data: { playlistid: playlistID, songid: songID },
                     success: function (result) {
                         if (result.success) {
@@ -108,3 +177,197 @@
         });
     });
 </script>
+
+@* Cau hinh trinh phat nhac *@
+<style>
+    .audio-playbar {
+        width: 900px;
+        display: flex;
+        flex-direction: column;
+        background-color: #f0f0f0;
+        padding: 10px;
+    }
+
+    .audio-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .audio-title {
+        font-weight: bold;
+    }
+
+    #custom-audio-player {
+        width: 100%;
+    }
+
+    .left-button, .right-button {
+        cursor: pointer;
+        padding: 5px;
+    }
+
+    #speed-select, #volume-container {
+        margin-left: 10px;
+    }
+
+    /* Update styles for the button container */
+    .button-container {
+        display: flex;
+        align-items: center;
+    }
+
+    #forward-button {
+        margin-right: auto;
+    }
+
+    .right-button {
+        margin-left: 0;
+    }
+
+
+    .time-container {
+        margin-top: 10px;
+        position: relative;
+        width: 100%;
+    }
+
+    #timeSlider {
+        width: 100%;
+    }
+
+    .buffer-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 5px;
+        background-color: #ccc;
+        width: 0;
+    }
+</style>
+
+<script>
+    function PlayMusicById(songUrl) {
+        var audioPlayer = document.getElementById('custom-audio-player');
+
+        // Set the new source using JavaScript
+        audioPlayer.src = songUrl;
+
+    }
+</script>
+<script>
+    var audioPlayer = document.getElementById('custom-audio-player');
+    var speedSelect = document.getElementById('speed-select');
+    speedSelect.addEventListener('change', function () {
+        // Get the selected playback speed from the dropdown
+        var selectedSpeed = speedSelect.value;
+        // Set the playback speed of the audio player
+        audioPlayer.playbackRate = parseFloat(selectedSpeed);
+    });
+
+</script>
+
+<script>
+    var playButton = document.getElementById('play-button');
+    var pauseButton = document.getElementById('pause-button');
+    $(document).ready(function () {
+        var audio = $("#custom-audio-player")[0]; // Get the audio element
+        var playButton = $("#play-button"); // Get the play button element
+        window.addEventListener('pageshow', function () {
+            clearSelection();
+        });
+        if (audio.paused) {
+            // If audio is paused, play it
+            playButton.find("i").removeClass("fa-play").addClass("fa-pause");
+        } else {
+            // If audio is playing, pause it
+            playButton.find("i").removeClass("fa-pause").addClass("fa-play");
+        }
+        // Add a click event listener to the play button
+        playButton.on("click", function () {
+            if (audio.paused) {
+                // If audio is paused, play it
+                audio.play();
+                playButton.find("i").removeClass("fa-play").addClass("fa-pause");
+            } else {
+                // If audio is playing, pause it
+                audio.pause();
+                playButton.find("i").removeClass("fa-pause").addClass("fa-play");
+            }
+        });
+
+        // Add an event listener for the 'ended' event to reset the play button when the audio finishes
+        function clearSelection() {
+            if (window.getSelection) {
+                var selection = window.getSelection();
+                selection.removeAllRanges();
+            }
+        }
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var audio = document.getElementById('custom-audio-player');
+        var volumeControl = document.getElementById('volume');
+        var volumeButton = $("#volume-button");
+
+        // Set initial volume
+        audio.volume = volumeControl.value;
+
+        // Update volume when the slider changes
+        volumeControl.addEventListener('input', function () {
+            audio.volume = volumeControl.value;
+            if (audio.volume == 0) {
+                volumeButton.removeClass("fa-volume-down").addClass("fa-volume-off");
+            }
+            else if (audio.volume < 0.30) {
+                volumeButton.removeClass("fa-volume-off").addClass("fa-volume-down");
+                volumeButton.removeClass("fa-volume-up").addClass("fa-volume-down");
+            }
+            else {
+                volumeButton.removeClass("fa-volume-down").addClass("fa-volume-up");
+            }
+        });
+    });
+
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var audio = document.getElementById('custom-audio-player');
+        var timeSlider = document.getElementById('timeSlider');
+        var bufferBar = document.getElementById('bufferBar');
+
+        // Update buffer bar
+        audio.addEventListener('progress', function () {
+            if (audio.buffered.length > 0) {
+                var buffered = audio.buffered.end(0);
+                var duration = audio.duration;
+                timeSlider.max = duration;
+                var bufferWidth = (buffered / duration) * 100 + '%';
+                bufferBar.style.width = bufferWidth;
+                timeSlider.style.backgroundSize = bufferWidth + ' 100%'; // Adjust this line
+            }
+        });
+
+        // Update time slider when audio is playing
+        audio.addEventListener('timeupdate', function () {
+            var currentTime = audio.currentTime;
+            var duration = audio.duration;
+            var sliderPosition = (currentTime / duration) * 100 + '%';
+
+            timeSlider.value = currentTime;
+            bufferBar.style.width = sliderPosition;
+        });
+
+        // Seek audio when the slider changes
+        timeSlider.addEventListener('input', function () {
+            var seekTime = timeSlider.value;
+            audio.currentTime = seekTime;
+        });
+    });
+</script>
+
+
+

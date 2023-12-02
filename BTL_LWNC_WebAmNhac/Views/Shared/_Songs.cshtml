@@ -21,7 +21,7 @@
     <div class="header">
 
         <div class="logo-box">
-            <img src="..\image\logo.jpg" class="logo" alt="logo">
+            <img src="~/image/logo.jpg" class="logo" alt="logo" runat="server" />
         </div>
         <div class="logo-title">
             <h4>My Music</h4>
@@ -30,7 +30,7 @@
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Search">
             <button class="search-button">
-                <img src="..\image\search.png" alt="Search">
+                <img src="~/image/search.png" alt="Search" runat="server" />
             </button>
         </div>
         <div class="account-container">
@@ -65,7 +65,8 @@
 
     <div class="footer">
     </div>
-    <script src="/js/showPlaylist.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     <script src="~/js/song.js"></script>
     <script src="~/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
