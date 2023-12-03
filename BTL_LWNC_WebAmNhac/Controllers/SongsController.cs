@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BTL_LWNC_WebAmNhac.Data;
 using BTL_LWNC_WebAmNhac.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BTL_LWNC_WebAmNhac.Controllers
 {
@@ -27,7 +28,6 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             return View(await bTL_LWNC_WebAmNhacContext.ToListAsync());
         }
 
-        
         // GET: Songs/Details/5
         public async Task<IActionResult> Details(int? id)
         {

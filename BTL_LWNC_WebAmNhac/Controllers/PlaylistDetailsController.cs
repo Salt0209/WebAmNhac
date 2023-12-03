@@ -57,6 +57,34 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 
             return View(playlistDetail);
         }
+        public async Task<IActionResult> Playlist(int? id)
+        {
+            if (id == null || _context.PlaylistDetail == null)
+            {
+                return NotFound();
+            }
+
+            var playlistDetail = await _context.PlaylistDetail
+                .Include(p => p.Playlist)
+                .Include(p => p.Song).ThenInclude(s => s.Artist)
+                .Include(p => p.Song).ThenInclude(s => s.Genre)
+                .Where(m => m.PlaylistID == id)
+                .ToListAsync();
+            if (playlistDetail == null)
+            {
+                return NotFound();
+            }
+            var playlist = _context.Playlist.Find(id);
+            if (playlist.ViewCount == null)
+            {
+                playlist.ViewCount = 0;
+            }
+            playlist.ViewCount++;
+            // Update the database
+            _context.SaveChanges();
+
+            return View(playlistDetail);
+        }
         [HttpPost]
         public async Task<JsonResult> addToPlaylistDetail(int playlistID, int songID)
         {

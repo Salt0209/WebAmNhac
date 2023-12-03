@@ -1,0 +1,197 @@
+﻿
+.song img {
+    width: 100px;
+    max-height: 100px;
+}
+/* ------------------------------------------------------- */
+/* Cau hinh man hinh chinh */
+
+/* Danh sach bai hat */
+.music-box {
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .music-box::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+    }
+
+    .music-box i {
+        align-self: center;
+        color: black;
+        cursor: pointer;
+    }
+
+.music-div {
+    margin-right: 30px;
+}
+
+    .music-div:hover {
+        cursor: pointer;
+    }
+
+.music-info {
+    width: 100%;
+    height: 50px;
+    display: flex;
+}
+
+.music-img {
+    width: 50px;
+    height: 50px;
+}
+
+    .music-img img {
+        width: 40px;
+        height: 40px;
+        margin: 2px 5px;
+        padding: 1px;
+    }
+
+.music-name {
+    width: 270px;
+    padding: 0 5px;
+    height: 50px;
+}
+
+    .music-name h6 {
+        margin-top: 12px 0px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .music-name p {
+        font-size: 16px;
+        line-height: 1px;
+        letter-spacing: 0.5px;
+        color: #000;
+        cursor: pointer;
+    }
+
+.music-box hr {
+    width: 100%;
+    margin-top: 4px !important;
+    margin-bottom: 6px !important;
+}
+
+/* Danh sach playlist */
+.playlist-container {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.playlist-div {
+    width: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 30px;
+}
+
+    .playlist-div:hover {
+        cursor: pointer;
+    }
+
+.image-container {
+    overflow: hidden;
+    height: 200px;
+    width: 200px;
+    margin: 0px auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+    .image-container img {
+        max-width: 100%; /* Ensure the image fits within the container */
+        max-height: 100%; /* Ensure the image fits within the container */
+        position: absolute; /* Position the image absolutely within the container */
+        top: 50%; /* Move the image 50% from the top of the container */
+        left: 50%; /* Move the image 50% from the left of the container */
+        transform: translate(-50%, -50%); /* Center the image */
+    }
+
+.playlist-div .playlist-title {
+    font-size: 16px;
+    color: black;
+    padding: 5px;
+    justify-content: center;
+    bottom: 0;
+    width: 100%;
+    line-height: 1.5;
+}
+
+    .playlist-div .playlist-title > .text-bold {
+        font-weight: bold;
+    }
+
+    .playlist-div .playlist-title > .text-thin {
+        font-weight: normal;
+        max-height: 50px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+
+
+/* Danh sách nghệ sĩ */
+
+.artist-container {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+    .artist-container .artist-div {
+        width: 200px;
+        margin-right: 30px;
+        text-align: center;
+    }
+
+        .artist-container .artist-div:hover {
+            cursor: pointer;
+        }
+
+.artist-img-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.artist-img {
+    max-width: 100%;
+    height: auto;
+}
+
+.artist-container .artist-div h1 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    margin-top: 20px;
+}
+
+.artist-container .artist-div p {
+    font-size: 14px;
+    color: #333;
+}

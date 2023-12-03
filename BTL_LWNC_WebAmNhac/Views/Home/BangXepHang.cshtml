@@ -8,27 +8,27 @@
 }
 @model Home
 <style>
-    body {
+    .chart body {
         font-family: 'Arial', sans-serif;
     }
 
-    table {
+    .chart table {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
     }
 
-    th, td {
+    .chart th, td {
         padding: 10px;
         text-align: left;
         border-bottom: 1px solid #ddd;
     }
 
-    th {
+    .chart th {
         background-color: #f2f2f2;
     }
 
-    tr:hover {
+    .chart tr:hover {
         background-color: #f5f5f5;
     }
 </style>
@@ -39,7 +39,7 @@
 
 <h2>#Songchart</h2>
 
-    <table>
+    <table class="chart">
         <thead>
             <tr>
                 <th>Rank</th>

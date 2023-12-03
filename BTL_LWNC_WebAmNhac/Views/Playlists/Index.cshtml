@@ -58,3 +58,28 @@
         }
     </tbody>
 </table>
+
+<div class="title">
+    <h4>Playlist</h4>
+</div>
+<div class="playlist-container">
+    @foreach (var item in Model)
+    {
+        <div class="playlist-div">
+            <div class="image-container">
+                <img src="@item.Thumbnail" class="playlist-img" alt="" runat="server" />
+            </div>
+            <!-- name detail -->
+            <div class="playlist-title">
+                <div class="text-bold">
+                    <a href="@Url.Action("Details", "PlaylistDetails",new { id=item.ID})">
+                        @item.Name
+                    </a>
+                </div>
+                <div class="text-thin">
+                    @item.Detail
+                </div>
+            </div>
+        </div>
+    }
+</div>

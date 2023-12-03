@@ -19,32 +19,9 @@
 <body>
 
     <div class="header">
-
-        <div class="logo-box">
-            <img src="~/image/logo.jpg" class="logo" alt="logo" runat="server" />
-        </div>
-        <div class="logo-title">
-            <h4>My Music</h4>
-        </div>
-
-        <div class="search-container">
-            <input type="text" class="search-input" placeholder="Search">
-            <button class="search-button">
-                <img src="~/image/search.png" alt="Search" runat="server" />
-            </button>
-        </div>
-        <div class="account-container">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a class="logout-btn" href="/Users/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                <a id="Dangnhap" href="/UserPlaylists/Index">@User.Identity.Name</a>
-            }
-            else
-            {
-                <a id="Dangnhap" href="/Users/Login">Đăng nhập</a>
-                <a id="Dangky" href="/Users/Register">Đăng ký</a>
-            }
-        </div>
+        @await Component.InvokeAsync("Logo")
+        @await Component.InvokeAsync("SearchBar")
+        @await Component.InvokeAsync("Account")
     </div>
     <hr id="hr-header">
 
@@ -59,14 +36,12 @@
             @RenderBody()
 
             <!-- Kết thúc danh sách -->
-
         </div>
     </div>
 
     <div class="footer">
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
     <script src="~/js/song.js"></script>
     <script src="~/js/site.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
