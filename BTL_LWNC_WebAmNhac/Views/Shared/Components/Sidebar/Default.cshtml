@@ -7,13 +7,30 @@
 
 <div class="left-side-bar">
     <ul>
+
+        @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("admin")))
+        {
+            <li><a class="active" href="/Home/Admin">Quản lý</a></li>
+            <li><a href="/Home/Index">Khám phá</a></li>
+            <li><a href="/Home/BangXepHang">Bảng xếp hạng</a></li>
+            <li><a href="/Playlists/UserPlaylist" style="border-bottom: 1px solid #ccc;">Thư viện</a></li>
+        }else
+        {
         <li><a class="active" href="/Home/Index">Khám phá</a></li>
         <li><a href="/Home/BangXepHang">Bảng xếp hạng</a></li>
-        <li><a href="/UserPlaylists/Index" style="border-bottom: 1px solid #ccc;">Thư viện</a></li>
+        <li><a href="/Playlists/UserPlaylist" style="border-bottom: 1px solid #ccc;">Thư viện</a></li>
+
+
         @foreach (var item in Model)
         {
-            <li><a href="#news">@item.Name</a></li>
+            <li>
+                <a asp-controller="Home" asp-action="ShowSongByGenreId"
+                   asp-route-id="@item.ID">@item.Name</a>
+            </li>
         }
+        }
+
+        
     </ul>
 </div>
 

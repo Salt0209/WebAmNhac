@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BTL_LWNC_WebAmNhac.Data;
 using BTL_LWNC_WebAmNhac.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BTL_LWNC_WebAmNhac.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ArtistsController : Controller
     {
         private readonly BTL_LWNC_WebAmNhacContext _context;

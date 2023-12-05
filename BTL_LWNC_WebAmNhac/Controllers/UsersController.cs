@@ -11,10 +11,11 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using System.Xml.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BTL_LWNC_WebAmNhac.Controllers
 {
-	public class UsersController : Controller
+    public class UsersController : Controller
 	{
 		private readonly BTL_LWNC_WebAmNhacContext _context;
 

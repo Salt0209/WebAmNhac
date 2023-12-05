@@ -8,12 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using BTL_LWNC_WebAmNhac.Data;
 using BTL_LWNC_WebAmNhac.Models;
 using Microsoft.AspNetCore.Authorization;
+using BTL_LWNC_WebAmNhac.Models.ViewModels;
 
 namespace BTL_LWNC_WebAmNhac.Controllers
 {
     public class SongsController : Controller
     {
         private readonly BTL_LWNC_WebAmNhacContext _context;
+        public int pageSize = 9;
 
         public SongsController(BTL_LWNC_WebAmNhacContext context)
         {
@@ -22,12 +24,45 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 
         // GET: Songs
         
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int productPage=1)
         {
-            var bTL_LWNC_WebAmNhacContext = _context.Song.Include(s => s.Artist).Include(s => s.Genre);
-            return View(await bTL_LWNC_WebAmNhacContext.ToListAsync());
+            return View(
+                new SongListViewModel
+                {
+                    Songs = _context.Song.Include(s => s.Artist).Include(s => s.Genre)
+                    .Skip((productPage - 1) * pageSize)
+                    .Take(pageSize),
+                    PagingInfo = new PagingInfo
+                    {
+                        ItemsPerPage = pageSize,
+                        CurrentPage = productPage,
+                        TotalItems = _context.Song.Count()
+                    }
+                }
+                );
         }
 
+        [HttpPost]
+        public IActionResult Search(string keywords)
+        {
+            return View(_context.Song.Include(s => s.Artist).Include(s => s.Genre)
+                    .Where(s=>s.Name.Contains(keywords)));
+        }
+        [HttpPost]
+        public IActionResult SearchByGenre(string keywords)
+        {
+            return View(_context.Song.Include(s => s.Artist).Include(s => s.Genre)
+                    .Where(s => s.Genre.Name.Contains(keywords)));
+        }
+        public IActionResult ShowSongByGenreId(int id)
+        {
+            var SongByGenre =_context.Song
+                .Include(s => s.Artist).Include(s => s.Genre)
+                .AsNoTracking()
+                .Where(x => x.GenreID == id)
+                .OrderBy(x => x.Name).ToList();
+            return View("Search",SongByGenre);
+        }
         // GET: Songs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -56,13 +91,14 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         }
 
         // GET: Songs/Create
+        [Authorize(Roles ="Admin")]
         public IActionResult Create()
         {
             ViewData["ArtistID"] = new SelectList(_context.Set<Artist>(), "ID", "Name");
             ViewData["GenreID"] = new SelectList(_context.Set<Genre>(), "ID", "Name");
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Songs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -80,7 +116,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             ViewData["GenreID"] = new SelectList(_context.Set<Genre>(), "ID", "Name", song.GenreID);
             return View(song);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Songs/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -98,7 +134,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             ViewData["GenreID"] = new SelectList(_context.Set<Genre>(), "ID", "Name", song.GenreID);
             return View(song);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Songs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -135,7 +171,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             ViewData["GenreID"] = new SelectList(_context.Set<Genre>(), "ID", "Name", song.GenreID);
             return View(song);
         }
-
+        [Authorize(Roles = "Admin")]
         // GET: Songs/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -155,7 +191,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 
             return View(song);
         }
-
+        [Authorize(Roles = "Admin")]
         // POST: Songs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -174,7 +210,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
+        [Authorize(Roles = "Admin")]
         private bool SongExists(int id)
         {
           return (_context.Song?.Any(e => e.ID == id)).GetValueOrDefault();

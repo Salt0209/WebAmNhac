@@ -4,8 +4,11 @@
 @{
 }
 <div class="search-container">
-    <input type="text" class="search-input" placeholder="Search">
-    <button class="search-button">
-        <img src="~/image/search.png" alt="Search" runat="server" />
-    </button>
+    <form asp-action="SearchByGenre" asp-controller="Songs">
+        <input type="text" name="keywords" class="search-input" placeholder="Search">
+        <button type="submit" class="search-button">
+            <img src="~/image/search.png" alt="Search" runat="server" />
+        </button>
+    </form>
+
 </div>

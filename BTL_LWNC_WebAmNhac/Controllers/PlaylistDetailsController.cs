@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BTL_LWNC_WebAmNhac.Data;
 using BTL_LWNC_WebAmNhac.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BTL_LWNC_WebAmNhac.Controllers
 {
@@ -31,6 +32,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         // GET: PlaylistDetails/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            ViewBag.playlistId = id;
             if (id == null || _context.PlaylistDetail == null)
             {
                 return NotFound();
@@ -47,7 +49,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
                 return NotFound();
             }
             var playlist = _context.Playlist.Find(id);
-            if(playlist.ViewCount == null)
+            if(playlist.ViewCount <0)
             {
                 playlist.ViewCount = 0;
             }
@@ -85,6 +87,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
 
             return View(playlistDetail);
         }
+        [Authorize(Roles = "Admin,User")]
         [HttpPost]
         public async Task<JsonResult> addToPlaylistDetail(int playlistID, int songID)
         {
@@ -93,6 +96,10 @@ namespace BTL_LWNC_WebAmNhac.Controllers
                 PlaylistID = playlistID,
                 SongID = songID
             };
+/*            if (PlaylistDetailExists(playlistID, songID))
+            {
+                return Json(new { success = false, errorMessage = "Bài hát đã có trong playlist" });
+            }*/
 
             _context.PlaylistDetail.Add(playlistDetail);
 
@@ -109,6 +116,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         }
 
         // GET: PlaylistDetails/Create
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Create()
         {
             ViewData["PlaylistID"] = new SelectList(_context.Set<Playlist>(), "ID", "Name");
@@ -119,6 +127,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         // POST: PlaylistDetails/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,User")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("PlaylistID,SongID")] PlaylistDetail playlistDetail)
@@ -131,6 +140,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             }
             return View(playlistDetail);
         }
+        [Authorize(Roles = "Admin,User")]
         [HttpPost]
         public async Task<JsonResult> XoaBaiHat(int playlistid, int songid)
         {
@@ -152,6 +162,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             return Json(new { success = true });
         }
         // GET: PlaylistDetails/Delete/5
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> Delete(int? playlistID, int? songID)
         {
             if (playlistID == null || songID==null || _context.PlaylistDetail == null)
@@ -171,6 +182,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
         }
 
         // POST: PlaylistDetails/Delete/5
+        [Authorize(Roles = "Admin,User")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int playlistID, int songID)
@@ -188,7 +200,19 @@ namespace BTL_LWNC_WebAmNhac.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        [HttpPost]
+        private JsonResult CheckExitInPlaylist(int id)
+        {
+            var boolexit= (_context.PlaylistDetail?.Any(e => e.SongID == id)).GetValueOrDefault();
+            if (boolexit){
+                return Json(new { success = true });
+            }
+            else {
+                return Json(new { success = false });
+            }
+        }
 
+        [Authorize(Roles = "Admin,User")]
         private bool PlaylistDetailExists(int playlistID,int songID)
         {
           return (_context.PlaylistDetail?.Any(e => e.PlaylistID == playlistID && e.SongID==songID)).GetValueOrDefault();

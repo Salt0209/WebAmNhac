@@ -1,0 +1,30 @@
+﻿
+@model IEnumerable<BTL_LWNC_WebAmNhac.Models.Song>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="title">
+    <h4>Danh sách bài hát theo @Model.FirstOrDefault().Genre.Name</h4>
+</div>
+<div class="playlist-container">
+    @foreach (var item in Model)
+    {
+        <div class="playlist-div">
+            <div class="image-container">
+                <img src="@item.Thumbnail" class="playlist-img" alt="" runat="server" />
+            </div>
+            <!-- name detail -->
+            <div class="playlist-title">
+                <div class="text-bold">
+                    <a href="@Url.Action("Details", "Songs",new { id=item.ID})">
+                        @item.Name
+                    </a>
+                </div>
+                <div class="text-thin">
+                    @item.Genre.Name
+                </div>
+            </div>
+
+        </div>
+    }
+</div>

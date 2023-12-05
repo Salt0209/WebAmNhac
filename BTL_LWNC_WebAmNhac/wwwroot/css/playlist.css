@@ -1,4 +1,14 @@
-﻿body {
+﻿.header{
+    position:fixed;
+    z-index:100;
+    width:100%;
+    top:0
+}
+.left-side-bar{
+    margin-top:50px;
+}
+
+body {
     background-color: #f5f5f5;
 }
 
@@ -111,7 +121,7 @@ html {
 
 /* PLAYLIST */
 .playlist {
-    margin-top: 350px;
+    margin-top: 400px;
     padding: 12px;
 }
 

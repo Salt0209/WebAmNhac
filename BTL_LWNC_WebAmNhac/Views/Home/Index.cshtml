@@ -3,11 +3,8 @@
 }
 @model Home
 
-
-
-
 <!-- Danh sách bài hát -->
-
+@await Component.InvokeAsync("Option")
 <div class="title">
     <h4>Bài hát</h4>
     <h5><a href="/Songs">Hiện tất cả></a></h5>
@@ -21,7 +18,11 @@
                     <img src="@item.Thumbnail" alt="" runat="server" />
                 </div>
                 <div class="music-name">
-                    <h6>@item.Name</h6>
+                    <h6>
+                        <a href="@Url.Action("Details", "Songs",new { id=item.ID})">
+                            @item.Name
+                        </a>
+                    </h6>
                     <p>@item.Artist.Name</p>
                 </div>
 @*                 <i class="fa fa-ellipsis-v"></i> *@
@@ -36,7 +37,7 @@
 <!-- Danh sách playlist -->
 <div class="title">
     <h4>Playlist</h4>
-    <h5><a href="/Songs">Hiện tất cả></a></h5>
+    <h5><a href="/Playlists/Index">Hiện tất cả></a></h5>
 </div>
 <div class="playlist-container">
     @foreach (var item in Model.Playlists)
@@ -48,7 +49,7 @@
             <!-- name detail -->
             <div class="playlist-title">
                 <div class="text-bold">
-                    <a href="@Url.Action("Details", "PlaylistDetails",new { id=item.ID})">
+                    <a href="@Url.Action("Playlist", "PlaylistDetails",new { id=item.ID})">
                     @item.Name
                     </a>
                 </div>
@@ -60,7 +61,7 @@
     }
 </div>
 <!-- Kết thúc playlist -->
-<!-- Danh sách nghệ sĩ -->
+@* <!-- Danh sách nghệ sĩ -->
 <div class="title">
     <h4>Nghệ sĩ</h4>
     <h5><a href="/Artists">Hiện tất cả></a></h5>
@@ -77,4 +78,4 @@
             <p>@item.Country</p>
         </div>
     }
-</div>
+</div> *@

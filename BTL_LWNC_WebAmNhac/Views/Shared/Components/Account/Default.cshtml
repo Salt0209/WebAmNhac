@@ -8,7 +8,7 @@
     @if (User.Identity.IsAuthenticated)
     {
         <a class="logout-btn" href="/Users/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-        <a id="Dangnhap" href="/UserPlaylists/Index">@User.Identity.Name</a>
+        <a id="Dangnhap" href="/Playlists/UserPlaylist">@User.Identity.Name</a>
     }
     else
     {

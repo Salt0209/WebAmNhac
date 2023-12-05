@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BTL_LWNC_WebAmNhac.Models.Song>
+﻿@model BTL_LWNC_WebAmNhac.Models.ViewModels.SongListViewModel
 @using System.Security.Claims;
 @{
     ViewData["Title"] = "Index";
@@ -41,7 +41,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Songs)
                 {
                     <tr>
                         <td>
@@ -73,6 +73,7 @@
                             <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
                             <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                            <a asp-action="Create" asp-controller="tblDisables" asp-route-id="@item.ID">Disable</a>
                         </td>
                     </tr>
                 }
@@ -80,67 +81,101 @@
         </table>
     </div>
 }
+else
+{
+    <div class="title">
+        <h4>Tất cả bài hát</h4>
+    </div>
 
-
-<div class="music-box">
-    @foreach (var item in Model)
-    {
-        <div class="music-div">
-            <div class="music-info">
-                <div class="music-img">
-                    <img src="@item.Thumbnail">
-                </div>
-                <div class="music-name">
-                    <h6>@item.Name</h6>
-                    <p>@item.Artist?.Name</p>
-                </div>
-                <div class="music-genre">
-                    <p>@item.Genre?.Name</p>
-                </div>
-                <div class="music-action">
-                    <div id="playIcon" onclick="redirectToDetails('@item.ID')"><i class="fa fa-play" aria-hidden="true"></i></div>
-                    <div id="playInNewTab" onclick="playInNewTab('@item.ID')"><i class="fa fa-clone" aria-hidden="true"></i></div>
-                    <div class="add-playlist" onclick="showList(event,'@item.ID')">
-                        <i class="fa fa-plus-square-o" aria-hidden="true" onclick="showList(event, '@item.ID');addPlaylist(event,'@item.ID')"></i>
+    <div class="music-box">
+        @foreach (var item in Model.Songs)
+        {
+            <div class="music-div">
+                <div class="music-info">
+                    <div class="music-img">
+                        <img src="@item.Thumbnail">
+                    </div>
+                    <div class="music-name">
+                        <h6>@item.Name</h6>
+                        <p>@item.Artist?.Name</p>
+                    </div>
+                    <div class="music-genre">
+                        <p>@item.Genre?.Name</p>
+                        @*                                             <p>
+                <a asp-controller="Home" asp-action="ShowSongByGenreId"
+                asp-route-id="@item.Genre?.ID">@item.Genre?.Name</a></p> *@
+                    </div>
+                    <div class="music-action">
+                        <div id="playIcon" onclick="redirectToDetails('@item.ID')"><i class="fa fa-play" aria-hidden="true"></i></div>
+                        <div id="playInNewTab" onclick="playInNewTab('@item.ID')"><i class="fa fa-clone" aria-hidden="true"></i></div>
+@if (User.Identity.IsAuthenticated && (User.IsInRole("User") || User.IsInRole("user")))
+{
+                        <div class="add-playlist" data-sid="@item.ID" onclick="showList(event,'@item.ID')">
+                            <i class="fa fa-plus-square-o" aria-hidden="true" onclick="showList(event, '@item.ID');addPlaylist(event,'@item.ID')"></i>
+                        </div>
+ }                
                     </div>
                 </div>
+                <hr>
             </div>
-            <hr>
+        }
+
+        <div class="pagination">
+
+            @{
+                int previousPage = Model.PagingInfo.CurrentPage <= 1 ? 1 : Model.PagingInfo.CurrentPage - 1;
+            }
+            <a href="/Songs/?productPage=@previousPage">Previous</a>
+
+            @for (int i = 1; i <= Model.PagingInfo.TotalPages; i++)
+            {
+                <a href="/Songs/?productPage=@i">@i</a>
+            }
+            @{
+                int nextPage = Model.PagingInfo.CurrentPage > Model.PagingInfo.TotalPages ? Model.PagingInfo.CurrentPage : Model.PagingInfo.CurrentPage + 1;
+            }
+            <a href="/Songs/?productPage=@nextPage">Next &raquo;</a>
         </div>
-    }
-</div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @await Component.InvokeAsync("UserPlaylist")
+    <script>
+        function addPlaylist(event, songID) {
+            console.log("go to func...");
+@*             var listcontainer = document.getElementById('list-container');
+            console.log(listcontainer); *@
+            // Unbind click event to avoid multiple bindings
+            $(".userPlaylist").off("click", ".list-item");
 
-@await Component.InvokeAsync("UserPlaylist")
-<script>
-    function addPlaylist(event, songID) {
-        console.log("go to func...");
-        $(".userPlaylist").on("click", ".list-item", function () {
-            var playlistID = $(this).data("id");
-            console.log("playlistID add to playlist:", playlistID);
-            console.log("songID add to playlist:", songID);
-            var url = '/PlaylistDetails/addToPlaylistDetail/?playlistID=' + playlistID + '&songID=' + songID;
-            $.ajax({
-                type: "POST",
-                url: url,
-                dataType: "json",
-                success: function (data) {
-                    if (data.success) {
-                        alert("add successfully");
-                        console.log("success add to playlist detail");
-                    } else {
-                        console.log("fail01");
-                        alert("Failed to add");
+            $(".userPlaylist").on("click", ".list-item", function () {
+                var playlistID = $(this).data("id");
+                console.log("playlistID add to playlist:", playlistID);
+                console.log("songID add to playlist:", songID);
+                var url = '/PlaylistDetails/addToPlaylistDetail/?playlistID=' + playlistID + '&songID=' + songID;
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data.success) {
+                            alert("Thêm thành công");
+                            console.log("success add to playlist detail");
+@*                             $(listcontainer).css("background-color", "blue"); *@
+                        } else {
+                            console.log("fail01");
+                            alert("Có lỗi xảy ra khi thêm!");
+                        }
+                    },
+                    error: function () {
+                        console.log("fail00");
+                        alert("Thêm thất bại. Xin vui lòng thử lại!");
                     }
-                },
-                error: function () {
-                    console.log("fail00");
-                    alert("Have a error while adding");
-                }
+                });
             });
-        });
-    }
-</script>
+        }
+    </script>
+    <script src="/js/showPlaylist.js"></script>
+}
 
-<script src="/js/showPlaylist.js"></script>
 
 

@@ -10,7 +10,11 @@ builder.Services.AddDbContext<BTL_LWNC_WebAmNhacContext>(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-	.AddCookie();
+	.AddCookie(option =>
+	{
+		option.LoginPath = "/Users/Login";
+		option.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+	});
 
 var app = builder.Build();
 

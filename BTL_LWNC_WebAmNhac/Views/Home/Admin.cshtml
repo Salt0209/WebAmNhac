@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var listPage = new List<string>();
+    listPage.Add("Home");
+    listPage.Add("Songs");
+    listPage.Add("Playlists");
+    listPage.Add("PlaylistDetails");
+}
+
+<h2>Trang quản lý</h2>
+
+<table>
+    <tr>
+        <th>STT</th>
+        <th>Trang</th>
+        <th>Tuỳ chọn</th>
+    </tr>
+    @for(int i= 0; i < listPage.Count; i++)
+    {
+        <tr>
+            <td>@(i+1)</td>
+            <td>@listPage[i]</td>
+            <td><a href="/@listPage[i]/Index">Đi tới ngay</a></td>
+        </tr>
+    }
+</table>
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>

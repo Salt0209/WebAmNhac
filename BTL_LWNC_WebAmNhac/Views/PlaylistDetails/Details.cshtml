@@ -3,32 +3,16 @@
 @{
     ViewData["Title"] = "Details";
     int currentPlaylist = -1;
-    Layout = "_Playlists";
 }
 
-<h1>Details</h1>
-<hr/>
-<p>
-    @Html.ActionLink("Go to add more songs", "Index", "Songs")
-</p>
-@if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("admin")))
-{
+@if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("admin"))){
+    <h1>Chi tiết Playlist</h1>
+    <hr />
+    <p>
+        @Html.ActionLink("Go to add more songs", "Index", "PlaylistDetails")
+    </p>
+    <h4>PlaylistDetail</h4>
     <div class="library">
-        <h4>PlaylistDetail</h4>
-        <hr />
-        @*     @foreach (var group in Model.GroupBy(p => p.PlaylistID))
-    {
-        <div>
-            <h3>@group.First().Playlist.Name</h3>
-            <ul>
-                @foreach (var playlistDetail in group)
-                {
-                <li>@playlistDetail.Song.Title</li>
-                }
-            </ul>
-        </div>
-    } *@
-
         @foreach (var item in Model)
         {
             @if (currentPlaylist != item.PlaylistID)
@@ -57,8 +41,73 @@
                 <dt class="col-sm-2">
                     SongID:
                 </dt>
-                <dd class="col-sm-10">
+                <dd class="col-sm-2">
                     @item.SongID
+                </dd>
+                <dd class="col-sm-8">
+                    <a class="delSongFromLib" data-playlistid="@item.PlaylistID" data-songid="@item.SongID"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
+                </dd>
+                <dt class="col-sm-2">
+                    Tên bài hát:
+                </dt>
+                <dd class="col-sm-10">
+                    @item.Song.Name
+                </dd>
+            </dl>
+        }
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+}
+@if (User.Identity.IsAuthenticated && (User.IsInRole("User") || User.IsInRole("user")))
+{
+    <p>
+        @Html.ActionLink("Go to add more songs", "Index", "Songs")
+    </p>
+
+    <div class="library">
+
+        @if (Model.Count > 0)
+        {
+            <img src="@Model.FirstOrDefault().Playlist.Thumbnail" style="max-width:200px" />
+            <a href="/PlaylistDetails/Playlist/?id=@Model.FirstOrDefault().PlaylistID"><i class="fa fa-play-circle" aria-hidden="true" style="font-size:4em;color:green"></i></a>
+            <h3>@Model.FirstOrDefault().Playlist.Name</h3>
+            <a asp-action="Edit" asp-controller="Playlists" asp-route-id="@Model.FirstOrDefault().Playlist.ID">Edit</a>
+            
+        }
+        else
+        {
+            <a asp-action="Delete" asp-controller="Playlists" asp-route-id="@ViewBag.playlistId"> Delete </a>
+        }
+
+        <hr />
+        @*     @foreach (var group in Model.GroupBy(p => p.PlaylistID))
+    {
+    <div>
+    <h3>@group.First().Playlist.Name</h3>
+    <ul>
+    @foreach (var playlistDetail in group)
+    {
+    <li>@playlistDetail.Song.Title</li>
+    }
+    </ul>
+    </div>
+    } *@
+
+        @foreach (var item in Model)
+        {
+            <dl class="row" id="@item.SongID">
+                <dt class="col-sm-2">
+                    SongID:
+                </dt>
+                <dd class="col-sm-2">
+                    @item.SongID
+                </dd>
+                <dd class="col-sm-8">
+                    <a class="delSongFromLib" data-playlistid="@item.PlaylistID" data-songid="@item.SongID"><i class="fa fa-trash" aria-hidden="true"></i></a>
+
                 </dd>
                 <dt class="col-sm-2">
                     Tên bài hát:
@@ -68,8 +117,8 @@
                 </dd>
             </dl>
             @*           <a value="Delete" asp-action="Delete" asp-route-playlistID="@item.PlaylistID" asp-route-songID="@item.SongID"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
- *@        
-            <div class="delSongFromLib" data-playlistid="@item.PlaylistID" data-songid="@item.SongID">Click Here to Delete</div>
+    *@
+
         }
     </div>
     <div>
@@ -77,8 +126,41 @@
     </div>
 }
 
-@* User..... *@
-@* --------------------------------------- *@
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(document).on("click", ".delSongFromLib", function () {
+            var playlistID = $(this).data("playlistid");
+            var songID = $(this).data("songid");
+
+
+            if (confirm("Bạn có chắc chắn muốn xoá không?")) {
+                $.ajax({
+                    type: "POST",
+                    url: '/PlaylistDetails/XoaBaiHat',
+                    data: { playlistid: playlistID, songid: songID },
+                    success: function (result) {
+                        if (result.success) {
+                            alert("Xoá thành công");
+                            location.reload();
+                            // var element = document.getElementById(hanghoaId)
+                            // element.parentNode.removeChild(element)
+                        } else {
+                            alert("Xoá thất bại");
+                        }
+                    },
+                    error: function () {
+                        console.log("playlistID=" + playlistID + "; songID=" + songID);
+                        alert("Lỗi xảy ra khi thử xoá sản phẩm.");
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+
+
 
 
 

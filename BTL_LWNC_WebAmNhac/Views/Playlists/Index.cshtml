@@ -3,83 +3,89 @@
 @{
     ViewData["Title"] = "Index";
 }
+@if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("admin")))
+{
+    <h1>Index</h1>
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                ID
-            </th>
-            <th>
-                Tên playlist
-            </th>
-            <th>
-                Mô tả
-            </th>
-            <th>
-                Ảnh bìa
-            </th>
-            <th>
-                Người đăng
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Tên playlist
+                </th>
+                <th>
+                    Mô tả
+                </th>
+                <th>
+                    Ảnh bìa
+                </th>
+                <th>
+                    Người đăng
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Detail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Thumbnail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.User.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    @await Component.InvokeAsync("Option")
+    <div class="title">
+        <h4>Tất cả playlist</h4>
+    </div>
+    <div class="playlist-container">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Detail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Thumbnail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+            <div class="playlist-div">
+                <div class="image-container">
+                    <img src="@item.Thumbnail" class="playlist-img" alt="" runat="server" />
+                </div>
+                <!-- name detail -->
+                <div class="playlist-title">
+                    <div class="text-bold">
+                        <a href="@Url.Action("Details", "PlaylistDetails",new { id=item.ID})">
+                            @item.Name
+                        </a>
+                    </div>
+                    <div class="text-thin">
+                        @item.Detail
+                    </div>
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    </div>
 
-<div class="title">
-    <h4>Playlist</h4>
-</div>
-<div class="playlist-container">
-    @foreach (var item in Model)
-    {
-        <div class="playlist-div">
-            <div class="image-container">
-                <img src="@item.Thumbnail" class="playlist-img" alt="" runat="server" />
-            </div>
-            <!-- name detail -->
-            <div class="playlist-title">
-                <div class="text-bold">
-                    <a href="@Url.Action("Details", "PlaylistDetails",new { id=item.ID})">
-                        @item.Name
-                    </a>
-                </div>
-                <div class="text-thin">
-                    @item.Detail
-                </div>
-            </div>
-        </div>
-    }
-</div>
+}

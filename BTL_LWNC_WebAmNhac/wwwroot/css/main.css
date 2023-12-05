@@ -1,6 +1,7 @@
 :root {
-    --primary-color: #0073e6;  /*(Xanh da troi)*/
+    --primary-color: #0073e6; /*(Xanh da troi)*/
     --secondary-color: #ff3399; /*Hong*/
+    --text-color: #333;
 }
 
 
@@ -255,3 +256,35 @@
 .menu .active {
     background-color: #ff3399;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px;
+}
+
+    .pagination a {
+        display: block;
+        padding: 8px 16px;
+        margin: 0 4px;
+        text-decoration: none;
+        color: #333;
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+        .pagination a:hover {
+            background-color: #ddd;
+        }
+
+        .pagination a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .pagination a.disabled {
+            pointer-events: none;
+            color: #ccc;
+        }

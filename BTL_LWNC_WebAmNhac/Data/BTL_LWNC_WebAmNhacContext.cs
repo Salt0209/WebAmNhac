@@ -31,5 +31,6 @@ namespace BTL_LWNC_WebAmNhac.Data
         }
 
         public DbSet<BTL_LWNC_WebAmNhac.Models.PlaylistDetail>? PlaylistDetail { get; set; }
+
     }
 }
