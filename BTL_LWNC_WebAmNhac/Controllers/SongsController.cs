@@ -15,7 +15,7 @@ namespace BTL_LWNC_WebAmNhac.Controllers
     public class SongsController : Controller
     {
         private readonly BTL_LWNC_WebAmNhacContext _context;
-        public int pageSize = 9;
+        public int pageSize = 5;
 
         public SongsController(BTL_LWNC_WebAmNhacContext context)
         {
